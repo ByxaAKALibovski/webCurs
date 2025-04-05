@@ -1,0 +1,389 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Изучаем псевдоклассы, псевдоэлементы и анимации в CSS</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Roboto', sans-serif;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 30px;
+            background: linear-gradient(135deg, #e0f7fa, #b2ebf2);
+            color: #333;
+            line-height: 1.6;
+        }
+        h1, h2, h3 {
+            color: #0277bd;
+            transition: color 0.3s ease;
+        }
+        h1:hover, h2:hover, h3:hover {
+            color: #01579b;
+        }
+        section {
+            background: white;
+            padding: 25px;
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            margin-bottom: 30px;
+        }
+        .editor, .result {
+            width: 48%;
+            display: inline-block;
+            vertical-align: top;
+            height: 250px;
+            border: 2px solid #b0bec5;
+            border-radius: 5px;
+            margin-bottom: 20px;
+            background: #fff;
+        }
+        .editor {
+            resize: none;
+            font-family: monospace;
+            padding: 15px;
+            box-sizing: border-box;
+        }
+        .result {
+            background-color: white;
+        }
+        .task, .mistake {
+            margin-top: 20px;
+            background: #f5f5f5;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
+        }
+        .solution, .answer {
+            display: none;
+            background: #eceff1;
+            padding: 15px;
+            margin-top: 10px;
+            border-left: 4px solid #0277bd;
+            border-radius: 5px;
+        }
+        button {
+            background: #0277bd;
+            color: white;
+            border: none;
+            padding: 12px 20px;
+            cursor: pointer;
+            border-radius: 5px;
+            transition: transform 0.2s ease, background 0.3s ease;
+        }
+        button:hover {
+            background: #01579b;
+            transform: scale(1.05);
+        }
+        a {
+            color: #0277bd;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+        a:hover {
+            color: #01579b;
+            text-decoration: underline;
+        }
+        pre {
+            background: #f5f5f5;
+            padding: 10px;
+            border-radius: 5px;
+            overflow-x: auto;
+        }
+        @media (max-width: 768px) {
+            .editor, .result {
+                width: 100%;
+                margin: 10px 0;
+            }
+        }
+    </style>
+</head>
+<body>
+    <main>
+        <section>
+            <h1>Псевдоклассы, псевдоэлементы и анимации в CSS: Полное руководство за 1,5 часа</h1>
+            <p>Добро пожаловать! Сегодня мы разберем, как использовать псевдоклассы и псевдоэлементы в CSS, чтобы сделать сайты интерактивными, а также добавим анимации для создания динамичных эффектов. Эти инструменты помогут вам создавать современные интерфейсы без сложного кода.</p>
+            <p><strong>Псевдоклассы</strong> — это состояния элементов (например, наведение курсора). Примеры: <code>:hover</code>, <code>:focus</code>.</p>
+            <p><strong>Псевдоэлементы</strong> — это части элементов или добавленный контент. Примеры: <code>::before</code>, <code>::after</code>.</p>
+            <p><strong>Анимации</strong> — это эффекты движения, которые можно комбинировать с псевдоклассами и псевдоэлементами.</p>
+        </section>
+
+        <section>
+            <h2>История и назначение</h2>
+            <p>Псевдоклассы появились в CSS1 (1996) с <code>:hover</code> и <code>:active</code>. В CSS3 добавились сложные селекторы вроде <code>:nth-child()</code>. Псевдоэлементы тоже эволюционировали: теперь они пишутся с <code>::</code>. Анимации стали частью CSS3 с появлением <code>transition</code> и <code>@keyframes</code>.</p>
+            <p>Эти инструменты упрощают создание интерактивных сайтов без JavaScript.</p>
+        </section>
+
+        <section>
+            <h2>Псевдоклассы: Подробный разбор</h2>
+            <p>Псевдоклассы стилизуют элементы в зависимости от их состояния или позиции. Синтаксис: <code>селектор:псевдокласс { свойства }</code>.</p>
+            <h3>Популярные псевдоклассы</h3>
+            <ul>
+                <li><code>:hover</code> — при наведении курсора.</li>
+                <li><code>:active</code> — при нажатии.</li>
+                <li><code>:focus</code> — при фокусе.</li>
+                <li><code>:nth-child(n)</code> — по порядку.</li>
+                <li><code>:first-child</code>, <code>:last-child</code> — первый и последний.</li>
+                <li><code>:not()</code> — исключение.</li>
+            </ul>
+            <h3>Примеры</h3>
+            <p>1. Наведение на кнопку:</p>
+            <pre><code>button:hover { background-color: #ff7043; }</code></pre>
+            <p>2. Чередование строк:</p>
+            <pre><code>li:nth-child(odd) { background: #e0f2f1; }</code></pre>
+            <p>3. Фокус на поле ввода:</p>
+            <pre><code>input:focus { border: 2px solid #0277bd; }</code></pre>
+        </section>
+
+        <section>
+            <h2>Псевдоэлементы: Подробный разбор</h2>
+            <p>Псевдоэлементы стилизуют части элементов или добавляют контент. Синтаксис: <code>селектор::псевдоэлемент { свойства }</code>.</p>
+            <h3>Популярные псевдоэлементы</h3>
+            <ul>
+                <li><code>::before</code> — перед элементом.</li>
+                <li><code>::after</code> — после элемента.</li>
+                <li><code>::first-line</code> — первая строка.</li>
+                <li><code>::first Equals-letter</code> — первая буква.</li>
+                <li><code>::selection</code> — выделенный текст.</li>
+            </ul>
+            <h3>Примеры</h3>
+            <p>1. Декоративная стрелка:</p>
+            <pre><code>h2::after { content: " ➔"; color: #d81b60; }</code></pre>
+            <p>2. Большая первая буква:</p>
+            <pre><code>p::first-letter { font-size: 2em; float: left; }</code></pre>
+            <p>3. Кастомное выделение:</p>
+            <pre><code>::selection { background: #ffca28; color: #333; }</code></pre>
+        </section>
+
+        <section>
+            <h2>Анимации в CSS</h2>
+            <p>CSS позволяет создавать анимации с помощью <code>transition</code> (плавные изменения) и <code>@keyframes</code> (сложные эффекты). Они отлично сочетаются с псевдоклассами и псевдоэлементами.</p>
+            <h3>Основы</h3>
+            <ul>
+                <li><code>transition</code> — плавный переход (например, смена цвета за 0.3 секунды).</li>
+                <li><code>animation</code> и <code>@keyframes</code> — задают последовательность изменений.</li>
+            </ul>
+            <h3>Примеры с псевдоклассами</h3>
+            <p>1. Пульсация кнопки при наведении:</p>
+            <pre><code>button:hover {
+    transform: scale(1.1);
+    transition: transform 0.3s ease;
+}</code></pre>
+            <p>2. Плавное появление текста при фокусе:</p>
+            <pre><code>input:focus {
+    border-color: #0277bd;
+    transition: border-color 0.5s ease;
+}</code></pre>
+            <h3>Примеры с псевдоэлементами</h3>
+            <p>1. Анимация появления стрелки:</p>
+            <pre><code>h2::after {
+    content: " ➔";
+    color: #d81b60;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+h2:hover::after {
+    opacity: 1;
+}</code></pre>
+            <p>2. Пульсирующий круг перед текстом:</p>
+            <pre><code>p::before {
+    content: "●";
+    color: #0277bd;
+    margin-right: 5px;
+    animation: pulse 1s infinite;
+}
+@keyframes pulse {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.2); }
+    100% { transform: scale(1); }
+}</code></pre>
+        </section>
+
+        <section>
+            <h2>Интерактивный пример</h2>
+            <p>Попробуйте создать анимацию для кнопки с псевдоклассами и псевдоэлементами:</p>
+            <textarea class="editor">button {
+    padding: 10px;
+    transition: all 0.3s ease;
+}
+button:hover {
+    background-color: #ff7043;
+    transform: scale(1.1);
+}
+button::after {
+    content: "✨";
+    margin-left: 5px;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+button:hover::after {
+    opacity: 1;
+}</textarea>
+            <iframe class="result"></iframe>
+        </section>
+
+        <section>
+            <h2>Практические задания</h2>
+            <div class="task">
+                <p>1. Сделайте кнопку красной при наведении с плавным переходом за 0.5 секунды.</p>
+                <button onclick="showSolution(1)">Решение</button>
+                <div id="solution1" class="solution">
+                    <pre><code>button { transition: background-color 0.5s ease; }
+button:hover { background-color: red; }</code></pre>
+                </div>
+            </div>
+            <div class="task">
+                <p>2. Добавьте зеленую звездочку перед абзацем с анимацией вращения.</p>
+                <button onclick="showSolution(2)">Решение</button>
+                <div id="solution2" class="solution">
+                    <pre><code>p::before {
+    content: "★";
+    color: green;
+    margin-right: 5px;
+    animation: spin 2s infinite;
+}
+@keyframes spin {
+    100% { transform: rotate(360deg); }
+}</code></pre>
+                </div>
+            </div>
+            <div class="task">
+                <p>3. Сделайте нечетные элементы списка синими с плавным появлением цвета.</p>
+                <button onclick="showSolution(3)">Решение</button>
+                <div id="solution3" class="solution">
+                    <pre><code>li:nth-child(odd) {
+    background-color: #0277bd;
+    transition: background-color 0.4s ease;
+}</code></pre>
+                </div>
+            </div>
+            <div class="task">
+                <p>4. Добавьте пульсирующий эффект кнопке при нажатии.</p>
+                <button onclick="showSolution(4)">Решение</button>
+                <div id="solution4" class="solution">
+                    <pre><code>button:active {
+    animation: pulse 0.5s;
+}
+@keyframes pulse {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.1); }
+    100% { transform: scale(1); }
+}</code></pre>
+                </div>
+            </div>
+            <div class="task">
+                <p>5. Сделайте первую букву абзаца красной с плавным увеличением при наведении.</p>
+                <button onclick="showSolution(5)">Решение</button>
+                <div id="solution5" class="solution">
+                    <pre><code>p::first-letter {
+    color: red;
+    font-size: 2em;
+    transition: font-size 0.3s ease;
+}
+p:hover::first-letter {
+    font-size: 2.5em;
+}</code></pre>
+                </div>
+            </div>
+            <div class="task">
+                <p>6. Исключите последний элемент списка из анимации изменения цвета.</p>
+                <button onclick="showSolution(6)">Решение</button>
+                <div id="solution6" class="solution">
+                    <pre><code>li:not(:last-child) {
+    background-color: #ffca28;
+    transition: background-color 0.3s ease;
+}</code></pre>
+                </div>
+            </div>
+        </section>
+
+        <section>
+            <h2>Типичные ошибки</h2>
+            <div class="mistake">
+                <p><strong>Ошибка:</strong> Забыть указать <code>content</code> в <code>::before</code>.</p>
+                <p><strong>Решение:</strong> Всегда добавляйте <code>content: ""</code>.</p>
+            </div>
+            <div class="mistake">
+                <p><strong>Ошибка:</strong> Неправильный синтаксис <code>@keyframes</code>.</p>
+                <p><strong>Решение:</strong> Убедитесь, что <code>@keyframes</code> идет перед использованием.</p>
+            </div>
+            <div class="mistake">
+                <p><strong>Ошибка:</strong> Использование <code>transition</code> без указания свойства.</p>
+                <p><strong>Решение:</strong> Укажите, что анимировать: <code>transition: transform 0.3s</code>.</p>
+            </div>
+        </section>
+
+        <section>
+            <h2>Викторина</h2>
+            <div class="task">
+                <p>1. Какой псевдокласс для нажатия?</p>
+                <button onclick="showAnswer(1)">Ответ</button>
+                <div id="answer1" class="answer"><p><code>:active</code></p></div>
+            </div>
+            <div class="task">
+                <p>2. Как добавить анимацию вращения?</p>
+                <button onclick="showAnswer(2)">Ответ</button>
+                <div id="answer2" class="answer"><p><code>@keyframes</code> с <code>transform: rotate()</code></p></div>
+            </div>
+            <div class="task">
+                <p>3. Как сделать плавный переход цвета?</p>
+                <button onclick="showAnswer(3)">Ответ</button>
+                <div id="answer3" class="answer"><p><code>transition: background-color 0.3s ease</code></p></div>
+            </div>
+        </section>
+
+        <section>
+            <h2>Заключение</h2>
+            <p>Вы освоили псевдоклассы, псевдоэлементы и анимации в CSS! Теперь вы можете создавать динамичные и стильные сайты.</p>
+            <p>Ресурсы:</p>
+            <ul>
+                <li><a href="https://developer.mozilla.org/ru/docs/Web/CSS/Pseudo-classes" target="_blank">MDN: Псевдоклассы</a></li>
+                <li><a href="https://developer.mozilla.org/ru/docs/Web/CSS/Pseudo-elements" target="_blank">MDN: Псевдоэлементы</a></li>
+                <li><a href="https://css-tricks.com/" target="_blank">CSS-Tricks</a></li>
+            </ul>
+        </section>
+    </main>
+
+    <script>
+        const editor = document.querySelector('.editor');
+        const result = document.querySelector('.result');
+
+        // Функция для обновления содержимого iframe
+        function updateResult() {
+            const html = '<button>Тест</button>';
+            const css = editor.value;
+            const fullContent = `
+                <!DOCTYPE html>
+                <html>
+                <head>
+                    <style>${css}</style>
+                </head>
+                <body>${html}</body>
+                </html>
+            `;
+            result.contentDocument.open();
+            result.contentDocument.write(fullContent);
+            result.contentDocument.close();
+        }
+
+        // Обновление при изменении текста
+        editor.addEventListener('input', updateResult);
+
+        // Инициализация при загрузке страницы
+        window.addEventListener('load', updateResult);
+
+        // Показ/скрытие решений
+        function showSolution(num) {
+            const solution = document.getElementById('solution' + num);
+            solution.style.display = solution.style.display === 'block' ? 'none' : 'block';
+        }
+
+        // Показ/скрытие ответов викторины
+        function showAnswer(num) {
+            const answer = document.getElementById('answer' + num);
+            answer.style.display = answer.style.display === 'block' ? 'none' : 'block';
+        }
+    </script>
+</body>
+</html>
