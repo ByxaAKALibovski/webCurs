@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Изучаем CSS Grid, Flexbox и адаптивную верстку</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body class="grid-flexbox">
+    <nav>
+        <ul>
+            <li><a href="index.html">Главная</a></li>
+            <li><a href="pseudo_animations.html">Псевдоклассы и анимации</a></li>
+            <li><a href="grid_flexbox.html">Grid, Flexbox, адаптивность</a></li>
+        </ul>
+    </nav>
+    <main>
+        <section>
+            <h1>CSS Grid, Flexbox и адаптивная верстка: Создаем современные макеты</h1>
+            <p>Привет, ребята! Сегодня мы углубимся в <strong>CSS Flexbox</strong> и <strong>CSS Grid</strong>, чтобы научиться создавать крутые макеты для сайтов. А еще разберем, как сделать сайты удобными на телефонах и планшетах с помощью <strong>адаптивной верстки</strong>. Эти навыки помогут вам верстать всё — от портфолио до интернет-магазинов!</p>
+            <p><strong>Flexbox</strong> — для гибких одномерных макетов (например, меню или карточки в ряд).</p>
+            <p><strong>CSS Grid</strong> — для сложных двумерных макетов (например, сетка галереи).</p>
+            <p><strong>Адаптивность</strong> — чтобы ваш сайт выглядел круто на любом устройстве.</p>
+        </section>
+
+        <section>
+            <h2>Зачем это нужно?</h2>
+            <p>Flexbox и Grid — основа современной верстки. Они заменили старые способы с float и position, упрощая создание сложных дизайнов. Адаптивная верстка делает сайты доступными для всех пользователей, будь то на большом мониторе или маленьком телефоне.</p>
+            <p>Примеры: сетка фотографий в соцсетях (Grid), горизонтальное меню (Flexbox), мобильная версия сайта (медиа-запросы).</p>
+        </section>
+
+        <section>
+            <h2>Flexbox: Подробный разбор</h2>
+            <p>Flexbox управляет расположением элементов в одном направлении (строка или столбец). Используйте <code>display: flex</code> на родительском элементе.</p>
+            <h3>Ключевые свойства</h3>
+            <ul>
+                <li><code>justify-content</code> — выравнивание по главной оси (center, space-between).</li>
+                <li><code>align-items</code> — выравнивание по поперечной оси (center, stretch).</li>
+                <li><code>flex-wrap</code> — перенос элементов (wrap, nowrap).</li>
+                <li><code>flex-grow/shrink</code> — рост или сжатие дочерних элементов.</li>
+            </ul>
+            <h3>Примеры</h3>
+            <p>1. Горизонтальное меню:</p>
+            <pre><code>.nav {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+.nav a { padding: 10px; }</code></pre>
+            <p>2. Карточки с переносом:</p>
+            <pre><code>.container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+.card { flex: 1 1 200px; }</code></pre>
+        </section>
+
+        <section>
+            <h2>CSS Grid: Подробный разбор</h2>
+            <p>Grid создает двумерные макеты с рядами и колонками. Используйте <code>display: grid</code> на родителе.</p>
+            <h3>Ключевые свойства</h3>
+            <ul>
+                <li><code>grid-template-columns/rows</code> — задают размеры колонок и строк.</li>
+                <li><code>gap</code> — расстояние между ячейками.</li>
+                <li><code>grid-area</code> — размещение элементов по именованным областям.</li>
+                <li><code>auto-fit/fill</code> — адаптивные колонки.</li>
+            </ul>
+            <h3>Примеры</h3>
+            <p>1. Простая сетка 3x3:</p>
+            <pre><code>.grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 10px;
+}
+.item { background: #e0f2f1; padding: 15px; }</code></pre>
+            <p>2. Макет сайта:</p>
+            <pre><code>.layout {
+    display: grid;
+    grid-template-areas:
+        "header header"
+        "sidebar main"
+        "footer footer";
+    gap: 10px;
+}
+.header { grid-area: header; }
+.sidebar { grid-area: sidebar; }
+.main { grid-area: main; }
+.footer { grid-area: footer; }</code></pre>
+        </section>
+
+        <section>
+            <h2>Адаптивная и респонсивная верстка</h2>
+            <p>Адаптивность — это когда сайт подстраивается под разные экраны. Респонсивность — это плавное изменение дизайна.</p>
+            <h3>Инструменты</h3>
+            <ul>
+                <li><code>@media</code> — медиа-запросы для разных устройств.</li>
+                <li><code>rem</code>, <code>em</code>, <code>vw</code>, <code>%</code> — относительные единицы.</li>
+                <li><code>min-width/max-width</code> — ограничение размеров.</li>
+            </ul>
+            <h3>Примеры</h3>
+            <p>1. Мобильное меню:</p>
+            <pre><code>.nav {
+    display: flex;
+}
+@media (max-width: 600px) {
+    .nav {
+        flex-direction: column;
+    }
+}</code></pre>
+            <p>2. Адаптивная сетка:</p>
+            <pre><code>.grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 10px;
+}</code></pre>
+        </section>
+
+        <section>
+            <h2>Интерактивный пример</h2>
+            <p>Попробуйте настроить Flexbox или Grid для карточек:</p>
+            <textarea class="editor">.container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    justify-content: center;
+}
+.card {
+    width: 100px;
+    height: 100px;
+    background: #0277bd;
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}</textarea>
+            <iframe class="result"></iframe>
+        </section>
+
+        <section>
+            <h2>Практические задания</h2>
+            <div class="task">
+                <p>1. Создайте горизонтальное меню с помощью Flexbox, которое центрирует элементы.</p>
+                <button onclick="showSolution(1)">Решение</button>
+                <div id="solution1" class="solution">
+                    <pre><code>.menu {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+}
+.menu a { padding: 10px; background: #0277bd; color: white; }</code></pre>
+                </div>
+            </div>
+            <div class="task">
+                <p>2. Сделайте сетку из 4 карточек с помощью Grid, с равными колонками.</p>
+                <p>Подсказка: Используйте <code>repeat()</code> и <code>1fr</code>.</p>
+                <button onclick="showSolution(2)">Решение</button>
+                <div id="solution2" class="solution">
+                    <pre><code>.grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 10px;
+}
+.card { background: #e0f2f1; padding: 15px; }</code></pre>
+                </div>
+            </div>
+            <div class="task">
+                <p>3. Адаптируйте Flexbox-контейнер, чтобы на мобильных он стал столбцом.</p>
+                <button onclick="showSolution(3)">Решение</button>
+                <div id="solution3" class="solution">
+                    <pre><code>.container {
+    display: flex;
+    gap: 10px;
+}
+@media (max-width: 600px) {
+    .container {
+        flex-direction: column;
+    }
+}</code></pre>
+                </div>
+            </div>
+            <div class="task">
+                <p>4. Создайте адаптивную сетку с минимум 200px на колонку.</p>
+                <button onclick="showSolution(4)">Решение</button>
+                <div id="solution4" class="solution">
+                    <pre><code>.grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 10px;
+}
+.item { background: #b2ebf2; padding: 10px; }</code></pre>
+                </div>
+            </div>
+            <div class="task">
+                <p>5. Сделайте макет сайта с хедером, сайдбаром и контентом с помощью Grid.</p>
+                <button onclick="showSolution(5)">Решение</button>
+                <div id="solution5" class="solution">
+                    <pre><code>.layout {
+    display: grid;
+    grid-template-areas: "header header" "sidebar content";
+    grid-template-columns: 200px 1fr;
+    gap: 10px;
+}
+.header { grid-area: header; background: #0277bd; }
+.sidebar { grid-area: sidebar; background: #e0f2f1; }
+.content { grid-area: content; background: #fff; }</code></pre>
+                </div>
+            </div>
+            <div class="task">
+                <p>6. Сделайте Flexbox-контейнер, где элементы растягиваются равномерно.</p>
+                <button onclick="showSolution(6)">Решение</button>
+                <div id="solution6" class="solution">
+                    <pre><code>.container {
+    display: flex;
+    justify-content: space-between;
+}
+.item { flex: 1; background: #ffca28; margin: 5px; padding: 10px; }</code></pre>
+                </div>
+            </div>
+        </section>
+
+        <section>
+            <h2>Типичные ошибки</h2>
+            <div class="mistake">
+                <p><strong>Ошибка:</strong> Забыть указать <code>gap</code> в Grid или Flexbox.</p>
+                <p><strong>Решение:</strong> Всегда добавляйте <code>gap: 10px</code> для отступов.</p>
+            </div>
+            <div class="mistake">
+                <p><strong>Ошибка:</strong> Неправильный медиа-запрос.</p>
+                <p><strong>Решение:</strong> Проверяйте <code>max-width</code> или <code>min-width</code>.</p>
+            </div>
+            <div class="mistake">
+                <p><strong>Ошибка:</strong> Использование Grid вместо Flexbox для простых макетов.</p>
+                <p><strong>Решение:</strong> Flexbox для одномерных, Grid для двумерных.</p>
+            </div>
+        </section>
+
+        <section>
+            <h2>Заключение</h2>
+            <p>Вы освоили Flexbox, Grid и адаптивную верстку! Теперь вы можете создавать современные макеты, которые работают на любых устройствах. Продолжайте экспериментировать!</p>
+            <p><strong>Тренажеры для практики:</strong></p>
+            <ul>
+                <li><a href="https://flexboxfroggy.com/" target="_blank">Flexbox Froggy</a> — игра для изучения Flexbox.</li>
+                <li><a href="https://cssgridgarden.com/" target="_blank">CSS Grid Garden</a> — игра для изучения Grid.</li>
+            </ul>
+            <p><strong>Ресурсы:</strong></p>
+            <ul>
+                <li><a href="https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Flexible_Box_Layout" target="_blank">MDN: Flexbox</a></li>
+                <li><a href="https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Grid_Layout" target="_blank">MDN: CSS Grid</a></li>
+                <li><a href="https://css-tricks.com/snippets/css/a-guide-to-flexbox/" target="_blank">CSS-Tricks: Flexbox Guide</a></li>
+                <li><a href="https://css-tricks.com/snippets/css/complete-guide-grid/" target="_blank">CSS-Tricks: Grid Guide</a></li>
+            </ul>
+        </section>
+    </main>
+    <script src="scripts.js"></script>
+</body>
+</html>
