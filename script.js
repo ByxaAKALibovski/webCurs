@@ -1,29 +1,39 @@
 document.addEventListener('DOMContentLoaded', () => {
     // Интерактивный редактор
-    const editor = document.querySelector('.editor');
-    const result = document.querySelector('.result');
+    const editor = document.querySelector('.editor-js');
+    const result = document.querySelector('.result-js');
 
     if (editor && result) {
-        // Определяем HTML для iframe в зависимости от страницы
-        let html = '';
-        if (document.body.classList.contains('pseudo-animations')) {
-            html = '<button style="padding: 10px;">Тест</button>';
-        } else if (document.body.classList.contains('grid-flexbox')) {
-            html = `
-                <div class="container">
-                    <div class="card" style="width: 100px; height: 100px; background: #ccc;">1</div>
-                    <div class="card" style="width: 100px; height: 100px; background: #ccc;">2</div>
-                    <div class="card" style="width: 100px; height: 100px; background: #ccc;">3</div>
-                </div>`;
-        }
+        // HTML для iframe
+        const html = `
+            <div class="container" style="display: flex; gap: 10px;">
+                <div class="card" style="width: 100px; height: 100px; background: #ccc;">1</div>
+                <div class="card" style="width: 100px; height: 100px; background: #ccc;">2</div>
+                <div class="card" style="width: 100px; height: 100px; background: #ccc;">3</div>
+            </div>
+            <button class="my-button" style="padding: 10px; margin-top: 10px;">Кликни!</button>
+            <input class="my-input" style="padding: 10px; margin-top: 10px;" placeholder="Введи текст">
+        `;
 
         function updateResult() {
-            const css = editor.value;
+            const jsCode = editor.value;
             const content = `
                 <!DOCTYPE html>
                 <html>
-                <head><style>${css}</style></head>
-                <body>${html}</body>
+                <head><style>
+                    .container { display: flex; gap: 10px; }
+                    .card { transition: all 0.3s ease; }
+                </style></head>
+                <body>
+                    ${html}
+                    <script>
+                        try {
+                            ${jsCode}
+                        } catch (e) {
+                            console.error("Ошибка в JS:", e);
+                        }
+                    </script>
+                </body>
                 </html>
             `;
             result.srcdoc = content; // Обновляем iframe через srcdoc

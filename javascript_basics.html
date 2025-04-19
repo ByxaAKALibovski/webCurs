@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Основы JavaScript для начинающих</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body class="javascript-basics">
+    <nav>
+        <ul>
+            <li><a href="index.html">Главная</a></li>
+            <li><a href="pseudo_animations.html">Псевдоклассы и анимации</a></li>
+            <li><a href="grid_flexbox.html">Grid, Flexbox, адаптивность</a></li>
+            <li><a href="javascript_basics.html">Основы JavaScript</a></li>
+        </ul>
+    </nav>
+    <main>
+        <section>
+            <h1>Основы JavaScript: Делаем сайты интерактивными</h1>
+            <p>Привет, ребята! Сегодня мы начинаем изучать <strong>JavaScript</strong> — язык, который оживляет сайты. С ним вы сможете менять содержимое страниц, реагировать на клики и создавать крутые эффекты. Это ваш первый шаг к созданию настоящих веб-приложений!</p>
+            <p>За 2 часа мы разберем, как работает JavaScript, научимся менять стили и текст на странице и добавим интерактивность. Погнали!</p>
+        </section>
+
+        <section>
+            <h2>Что такое JavaScript и зачем он нужен?</h2>
+            <p>JavaScript — это язык программирования, который работает в браузере. Если HTML — это скелет сайта, а CSS — его одежда, то JavaScript — это мышцы, которые заставляют страницу двигаться.</p>
+            <p>С помощью JS можно:</p>
+            <ul>
+                <li>Менять текст и стили на странице.</li>
+                <li>Обрабатывать клики, ввод текста и другие действия.</li>
+                <li>Загружать данные с сервера (например, картинки).</li>
+            </ul>
+            <p>Примеры: смена темы сайта, калькулятор, слайдер с фото.</p>
+        </section>
+
+        <section>
+            <h2>Как работает JavaScript?</h2>
+            <p>JS-код пишется в файле <code>.js</code> или внутри тега <code>&lt;script&gt;</code>. Он выполняется браузером, когда страница загружается или пользователь что-то делает.</p>
+            <p>Простейший пример:</p>
+            <pre><code>console.log("Привет, мир!");</code></pre>
+            <p>Открой консоль браузера (F12 → Console) и попробуй! Это команда выводит текст в консоль.</p>
+        </section>
+
+        <section>
+            <h2>Основы синтаксиса</h2>
+            <h3>Переменные</h3>
+            <p>Переменные хранят данные: текст, числа, цвета. Используйте <code>let</code>, <code>const</code> или <code>var</code>.</p>
+            <pre><code>let name = "Аня";
+const age = 15;
+console.log(name, age); // Аня 15</code></pre>
+
+            <h3>Типы данных</h3>
+            <p>Основные типы: строки (<code>"текст"</code>), числа (<code>42</code>), булевы (<code>true/false</code>).</p>
+            <pre><code>let text = "Привет";
+let number = 10;
+let isCool = true;</code></pre>
+
+            <h3>Функции</h3>
+            <p>Функции — это блоки кода, которые выполняются по вызову.</p>
+            <pre><code>function sayHello(name) {
+    console.log("Привет, " + name + "!");
+}
+sayHello("Саша"); // Привет, Саша!</code></pre>
+        </section>
+
+        <section>
+            <h2>Работа с DOM</h2>
+            <p>DOM (Document Object Model) — это модель страницы, через которую JS взаимодействует с HTML и CSS.</p>
+            <h3>Выбор элементов</h3>
+            <p>Используйте <code>querySelector</code> для поиска элементов:</p>
+            <pre><code>let button = document.querySelector(".my-button");
+console.log(button); // Найдет элемент с классом my-button</code></pre>
+
+            <h3>Изменение стилей и текста</h3>
+            <p>Меняйте текст с <code>textContent</code>, стили с <code>style</code>:</p>
+            <pre><code>let title = document.querySelector("h1");
+title.textContent = "Новый заголовок!";
+title.style.color = "blue";</code></pre>
+
+            <h3>Обработка событий</h3>
+            <p>Реагируйте на действия пользователя с <code>addEventListener</code>:</p>
+            <pre><code>let button = document.querySelector(".my-button");
+button.addEventListener("click", function() {
+    alert("Кнопка нажата!");
+});</code></pre>
+        </section>
+
+        <section>
+            <h2>Интерактивный пример</h2>
+            <p>Попробуйте написать JS-код, чтобы изменить цвет фона карточки или текст при клике:</p>
+            <textarea class="editor-js">let card = document.querySelector(".card");
+card.addEventListener("click", function() {
+    card.style.backgroundColor = "lightblue";
+});</textarea>
+            <iframe class="result-js"></iframe>
+        </section>
+
+        <section>
+            <h2>Практические задания</h2>
+            <div class="task">
+                <p>1. Создайте кнопку, которая меняет текст заголовка <code>h1</code> на "Привет, JS!"</p>
+                <button onclick="showSolution(1)">Решение</button>
+                <div id="solution1" class="solution">
+                    <pre><code>let title = document.querySelector("h1");
+let button = document.querySelector(".my-button");
+button.addEventListener("click", function() {
+    title.textContent = "Привет, JS!";
+});</code></pre>
+                </div>
+            </div>
+            <div class="task">
+                <p>2. Сделайте так, чтобы при клике на карточку она становилась зеленой.</p>
+                <button onclick="showSolution(2)">Решение</button>
+                <div id="solution2" class="solution">
+                    <pre><code>let card = document.querySelector(".card");
+card.addEventListener("click", function() {
+    card.style.backgroundColor = "green";
+});</code></pre>
+                </div>
+            </div>
+            <div class="task">
+                <p>3. Напишите функцию, которая выводит в консоль "Клик!" при клике на кнопку.</p>
+                <button onclick="showSolution(3)">Решение</button>
+                <div id="solution3" class="solution">
+                    <pre><code>let button = document.querySelector(".my-button");
+button.addEventListener("click", function() {
+    console.log("Клик!");
+});</code></pre>
+                </div>
+            </div>
+            <div class="task">
+                <p>4. Создайте кнопку, которая добавляет новую карточку в контейнер.</p>
+                <button onclick="showSolution(4)">Решение</button>
+                <div id="solution4" class="solution">
+                    <pre><code>let button = document.querySelector(".my-button");
+button.addEventListener("click", function() {
+    let newCard = document.createElement("div");
+    newCard.className = "card";
+    newCard.textContent = "Новая карточка";
+    newCard.style.width = "100px";
+    newCard.style.height = "100px";
+    newCard.style.backgroundColor = "#ccc";
+    document.querySelector(".container").appendChild(newCard);
+});</code></pre>
+                </div>
+            </div>
+            <div class="task">
+                <p>5. Сделайте так, чтобы при вводе текста в <code>input</code> он появлялся в заголовке.</p>
+                <button onclick="showSolution(5)">Решение</button>
+                <div id="solution5" class="solution">
+                    <pre><code>let input = document.querySelector(".my-input");
+let title = document.querySelector("h1");
+input.addEventListener("input", function() {
+    title.textContent = input.value || "Введите текст";
+});</code></pre>
+                </div>
+            </div>
+        </section>
+
+        <section>
+            <h2>Типичные ошибки</h2>
+            <div class="mistake">
+                <p><strong>Ошибка:</strong> Код выполняется до загрузки страницы.</p>
+                <p><strong>Решение:</strong> Используйте <code>DOMContentLoaded</code> или помещайте <code>script</code> в конец <code>body</code>.</p>
+            </div>
+            <div class="mistake">
+                <p><strong>Ошибка:</strong> Неправильный селектор в <code>querySelector</code>.</p>
+                <p><strong>Решение:</strong> Проверяйте классы и теги, используйте консоль для отладки.</p>
+            </div>
+            <div class="mistake">
+                <p><strong>Ошибка:</strong> Забыть вызвать функцию.</p>
+                <p><strong>Решение:</strong> Убедитесь, что функция вызывается, например, через событие.</p>
+            </div>
+        </section>
+
+        <section>
+            <h2>Заключение</h2>
+            <p>Вы сделали первый шаг в JavaScript! Теперь вы умеете менять страницу, реагировать на действия пользователей и писать простой код. Продолжайте практиковаться, и скоро вы создадите свои первые приложения!</p>
+            <p><strong>Ресурсы для практики:</strong></p>
+            <ul>
+                <li><a href="https://javascript.info/" target="_blank">JavaScript.info</a> — учебник с примерами.</li>
+                <li><a href="https://www.freecodecamp.org/learn/javascript-algorithms-and-data-structures/" target="_blank">FreeCodeCamp</a> — интерактивные задания.</li>
+                <li><a href="https://developer.mozilla.org/en-US/docs/Learn/JavaScript" target="_blank">MDN: Learn JavaScript</a> — официальная документация.</li>
+            </ul>
+        </section>
+    </main>
+    <script src="scripts.js"></script>
+</body>
+</html>
