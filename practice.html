@@ -1,0 +1,767 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Практика JavaScript</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body class="javascript-basics">
+    <nav>
+        <ul>
+            <li><a href="index.html">Главная</a></li>
+            <li><a href="pseudo_animations.html">Псевдоклассы и анимации</a></li>
+            <li><a href="grid_flexbox.html">Grid, Flexbox, адаптивность</a></li>
+            <li><a href="javascript_basics.html">Основы JavaScript</a></li>
+            <li><a href="practice.html">Практика JavaScript</a></li>
+        </ul>
+    </nav>
+    <main>
+        <section>
+            <h1>Практические задания по JavaScript</h1>
+            <p>Добро пожаловать на страницу практики! Здесь вы найдете 30 базовых заданий и 5 сложных задач для закрепления знаний по JavaScript. Каждое задание содержит описание, ожидаемый результат и решение, которое можно посмотреть, нажав на кнопку. Если в задании используются новые концепции, они объясняются.</p>
+        </section>
+
+        <!-- Задание 1 -->
+        <section class="task">
+            <h3>Задание 1: Изменение текста заголовка</h3>
+            <p>Создайте кнопку, которая при нажатии меняет текст заголовка <code>h1</code> на "Привет, JS!"</p>
+            <p><strong>Ожидаемый результат:</strong> При клике на кнопку текст заголовка становится "Привет, JS!".</p>
+            <button onclick="toggleSolution(1)">Показать решение</button>
+            <div id="solution1" class="solution" style="display: none;">
+                <pre><code>let title = document.querySelector("h1");
+let button = document.querySelector(".my-button");
+button.addEventListener("click", function() {
+    title.textContent = "Привет, JS!";
+});</code></pre>
+            </div>
+        </section>
+
+        <!-- Задание 2 -->
+        <section class="task">
+            <h3>Задание 2: Изменение цвета фона</h3>
+            <p>Сделайте так, чтобы при клике на карточку ее фон становился зеленым.</p>
+            <p><strong>Ожидаемый результат:</strong> Карточка становится зеленой после клика.</p>
+            <button onclick="toggleSolution(2)">Показать решение</button>
+            <div id="solution2" class="solution" style="display: none;">
+                <pre><code>let card = document.querySelector(".card");
+card.addEventListener("click", function() {
+    card.style.backgroundColor = "green";
+});</code></pre>
+            </div>
+        </section>
+
+        <!-- Задание 3 -->
+        <section class="task">
+            <h3>Задание 3: Вывод в консоль</h3>
+            <p>Напишите функцию, которая выводит "Клик!" в консоль при клике на кнопку.</p>
+            <p><strong>Ожидаемый результат:</strong> В консоли появляется "Клик!" после каждого нажатия.</p>
+            <button onclick="toggleSolution(3)">Показать решение</button>
+            <div id="solution3" class="solution" style="display: none;">
+                <pre><code>let button = document.querySelector(".my-button");
+button.addEventListener("click", function() {
+    console.log("Клик!");
+});</code></pre>
+            </div>
+        </section>
+
+        <!-- Задание 4 -->
+        <section class="task">
+            <h3>Задание 4: Добавление новой карточки</h3>
+            <p>Создайте кнопку, которая добавляет новую карточку в контейнер.</p>
+            <p><strong>Ожидаемый результат:</strong> При клике появляется новая серая карточка размером 100x100 пикселей.</p>
+            <button onclick="toggleSolution(4)">Показать решение</button>
+            <div id="solution4" class="solution" style="display: none;">
+                <pre><code>let button = document.querySelector(".my-button");
+button.addEventListener("click", function() {
+    let newCard = document.createElement("div");
+    newCard.className = "card";
+    newCard.textContent = "Новая карточка";
+    newCard.style.width = "100px";
+    newCard.style.height = "100px";
+    newCard.style.backgroundColor = "#ccc";
+    document.querySelector(".container").appendChild(newCard);
+});</code></pre>
+            </div>
+        </section>
+
+        <!-- Задание 5 -->
+        <section class="task">
+            <h3>Задание 5: Обновление заголовка из ввода</h3>
+            <p>Сделайте так, чтобы текст из <code>input</code> отображался в заголовке при вводе.</p>
+            <p><strong>Ожидаемый результат:</strong> Заголовок меняется в реальном времени по мере ввода текста.</p>
+            <button onclick="toggleSolution(5)">Показать решение</button>
+            <div id="solution5" class="solution" style="display: none;">
+                <pre><code>let input = document.querySelector(".my-input");
+let title = document.querySelector("h1");
+input.addEventListener("input", function() {
+    title.textContent = input.value || "Введите текст";
+});</code></pre>
+            </div>
+        </section>
+
+        <!-- Задание 6 -->
+        <section class="task">
+            <h3>Задание 6: Скрытие элемента</h3>
+            <p>Создайте кнопку, которая скрывает карточку при нажатии.</p>
+            <p><strong>Ожидаемый результат:</strong> Карточка исчезает после клика.</p>
+            <button onclick="toggleSolution(6)">Показать решение</button>
+            <div id="solution6" class="solution" style="display: none;">
+                <pre><code>let button = document.querySelector(".my-button");
+let card = document.querySelector(".card");
+button.addEventListener("click", function() {
+    card.style.display = "none";
+});</code></pre>
+            </div>
+        </section>
+
+        <!-- Задание 7 -->
+        <section class="task">
+            <h3>Задание 7: Переключение цвета</h3>
+            <p>Сделайте кнопку, которая переключает цвет фона карточки между красным и синим.</p>
+            <p><strong>Ожидаемый результат:</strong> Каждый клик меняет цвет с красного на синий и обратно.</p>
+            <button onclick="toggleSolution(7)">Показать решение</button>
+            <div id="solution7" class="solution" style="display: none;">
+                <pre><code>let button = document.querySelector(".my-button");
+let card = document.querySelector(".card");
+let isRed = true;
+button.addEventListener("click", function() {
+    card.style.backgroundColor = isRed ? "blue" : "red";
+    isRed = !isRed;
+});</code></pre>
+            </div>
+        </section>
+
+        <!-- Задание 8 -->
+        <section class="task">
+            <h3>Задание 8: Увеличение счетчика</h3>
+            <p>Создайте кнопку, которая увеличивает число в параграфе на 1 при каждом клике.</p>
+            <p><strong>Ожидаемый результат:</strong> Число в параграфе растет с каждым нажатием.</p>
+            <button onclick="toggleSolution(8)">Показать решение</button>
+            <div id="solution8" class="solution" style="display: none;">
+                <pre><code>let button = document.querySelector(".my-button");
+let counter = document.querySelector(".counter");
+let count = 0;
+button.addEventListener("click", function() {
+    count++;
+    counter.textContent = count;
+});</code></pre>
+            </div>
+        </section>
+
+        <!-- Задание 9 -->
+        <section class="task">
+            <h3>Задание 9: Случайный цвет</h3>
+            <p>Сделайте кнопку, которая задает карточке случайный цвет фона.</p>
+            <p><strong>Ожидаемый результат:</strong> Каждый клик меняет цвет на случайный.</p>
+            <p><strong>Новая концепция:</strong> Используйте <code>Math.random()</code> для генерации чисел от 0 до 1, умножьте на 255 для RGB.</p>
+            <button onclick="toggleSolution(9)">Показать решение</button>
+            <div id="solution9" class="solution" style="display: none;">
+                <pre><code>let button = document.querySelector(".my-button");
+let card = document.querySelector(".card");
+button.addEventListener("click", function() {
+    let r = Math.floor(Math.random() * 256);
+    let g = Math.floor(Math.random() * 256);
+    let b = Math.floor(Math.random() * 256);
+    card.style.backgroundColor = `rgb(${r}, ${g}, ${b})`;
+});</code></pre>
+            </div>
+        </section>
+
+        <!-- Задание 10 -->
+        <section class="task">
+            <h3>Задание 10: Добавление текста</h3>
+            <p>Создайте кнопку, которая добавляет новый параграф с текстом "Новый текст" в контейнер.</p>
+            <p><strong>Ожидаемый результат:</strong> Новый параграф появляется при каждом клике.</p>
+            <button onclick="toggleSolution(10)">Показать решение</button>
+            <div id="solution10" class="solution" style="display: none;">
+                <pre><code>let button = document.querySelector(".my-button");
+let container = document.querySelector(".container");
+button.addEventListener("click", function() {
+    let newP = document.createElement("p");
+    newP.textContent = "Новый текст";
+    container.appendChild(newP);
+});</code></pre>
+            </div>
+        </section>
+
+        <!-- Задание 11 -->
+        <section class="task">
+            <h3>Задание 11: Увеличение размера карточки</h3>
+            <p>Создайте кнопку, которая увеличивает ширину и высоту карточки на 10 пикселей при каждом клике.</p>
+            <p><strong>Ожидаемый результат:</strong> Карточка становится больше с каждым нажатием.</p>
+            <button onclick="toggleSolution(11)">Показать решение</button>
+            <div id="solution11" class="solution" style="display: none;">
+                <pre><code>let button = document.querySelector(".my-button");
+let card = document.querySelector(".card");
+let size = 100;
+button.addEventListener("click", function() {
+    size += 10;
+    card.style.width = size + "px";
+    card.style.height = size + "px";
+});</code></pre>
+            </div>
+        </section>
+
+        <!-- Задание 12 -->
+        <section class="task">
+            <h3>Задание 12: Показать/скрыть текст</h3>
+            <p>Создайте кнопку, которая показывает или скрывает параграф с текстом.</p>
+            <p><strong>Ожидаемый результат:</strong> Параграф появляется или исчезает при клике.</p>
+            <button onclick="toggleSolution(12)">Показать решение</button>
+            <div id="solution12" class="solution" style="display: none;">
+                <pre><code>let button = document.querySelector(".my-button");
+let text = document.querySelector(".text");
+button.addEventListener("click", function() {
+    text.style.display = text.style.display === "none" ? "block" : "none";
+});</code></pre>
+            </div>
+        </section>
+
+        <!-- Задание 13 -->
+        <section class="task">
+            <h3>Задание 13: Изменение текста кнопки</h3>
+            <p>Сделайте так, чтобы при клике на кнопку ее текст менялся с "Вкл" на "Выкл" и обратно.</p>
+            <p><strong>Ожидаемый результат:</strong> Текст кнопки переключается между "Вкл" и "Выкл".</p>
+            <button onclick="toggleSolution(13)">Показать решение</button>
+            <div id="solution13" class="solution" style="display: none;">
+                <pre><code>let button = document.querySelector(".my-button");
+let isOn = true;
+button.textContent = "Вкл";
+button.addEventListener("click", function() {
+    button.textContent = isOn ? "Выкл" : "Вкл";
+    isOn = !isOn;
+});</code></pre>
+            </div>
+        </section>
+
+        <!-- Задание 14 -->
+        <section class="task">
+            <h3>Задание 14: Сброс счетчика</h3>
+            <p>Добавьте вторую кнопку, которая сбрасывает счетчик из задания 8 до 0.</p>
+            <p><strong>Ожидаемый результат:</strong> При клике на вторую кнопку счетчик становится 0.</p>
+            <button onclick="toggleSolution(14)">Показать решение</button>
+            <div id="solution14" class="solution" style="display: none;">
+                <pre><code>let resetButton = document.querySelector(".reset-button");
+let counter = document.querySelector(".counter");
+resetButton.addEventListener("click", function() {
+    counter.textContent = "0";
+});</code></pre>
+            </div>
+        </section>
+
+        <!-- Задание 15 -->
+        <section class="task">
+            <h3>Задание 15: Подсчет кликов по карточкам</h3>
+            <p>Сделайте так, чтобы при клике на любую карточку в контейнере в консоль выводилось количество кликов.</p>
+            <p><strong>Ожидаемый результат:</strong> Каждый клик по карточке увеличивает счетчик в консоли.</p>
+            <p><strong>Новая концепция:</strong> Используйте <code>querySelectorAll</code> для выбора всех элементов с классом.</p>
+            <button onclick="toggleSolution(15)">Показать решение</button>
+            <div id="solution15" class="solution" style="display: none;">
+                <pre><code>let cards = document.querySelectorAll(".card");
+let clickCount = 0;
+cards.forEach(card => {
+    card.addEventListener("click", function() {
+        clickCount++;
+        console.log(`Кликов: ${clickCount}`);
+    });
+});</code></pre>
+            </div>
+        </section>
+
+        <!-- Задание 16 -->
+        <section class="task">
+            <h3>Задание 16: Удаление карточки</h3>
+            <p>Сделайте так, чтобы при клике на карточку она удалялась из контейнера.</p>
+            <p><strong>Ожидаемый результат:</strong> Карточка исчезает после клика.</p>
+            <button onclick="toggleSolution(16)">Показать решение</button>
+            <div id="solution16" class="solution" style="display: none;">
+                <pre><code>let card = document.querySelector(".card");
+card.addEventListener("click", function() {
+    card.remove();
+});</code></pre>
+            </div>
+        </section>
+
+        <!-- Задание 17 -->
+        <section class="task">
+            <h3>Задание 17: Изменение шрифта</h3>
+            <p>Создайте кнопку, которая меняет шрифт текста в параграфе на "Arial".</p>
+            <p><strong>Ожидаемый результат:</strong> Текст в параграфе становится Arial после клика.</p>
+            <button onclick="toggleSolution(17)">Показать решение</button>
+            <div id="solution17" class="solution" style="display: none;">
+                <pre><code>let button = document.querySelector(".my-button");
+let text = document.querySelector(".text");
+button.addEventListener("click", function() {
+    text.style.fontFamily = "Arial";
+});</code></pre>
+            </div>
+        </section>
+
+        <!-- Задание 18 -->
+        <section class="task">
+            <h3>Задание 18: Проверка ввода</h3>
+            <p>Сделайте так, чтобы при вводе текста в <code>input</code> в консоль выводилось, длиннее ли текст 5 символов.</p>
+            <p><strong>Ожидаемый результат:</strong> В консоли появляется "Длиннее 5" или "Короче 5".</p>
+            <p><strong>Новая концепция:</strong> Условия <code>if</code> позволяют выполнять разный код в зависимости от значения.</p>
+            <button onclick="toggleSolution(18)">Показать решение</button>
+            <div id="solution18" class="solution" style="display: none;">
+                <pre><code>let input = document.querySelector(".my-input");
+input.addEventListener("input", function() {
+    if (input.value.length > 5) {
+        console.log("Длиннее 5");
+    } else {
+        console.log("Короче 5");
+    }
+});</code></pre>
+            </div>
+        </section>
+
+        <!-- Задание 19 -->
+        <section class="task">
+            <h3>Задание 19: Смена класса</h3>
+            <p>Создайте кнопку, которая добавляет или убирает класс "highlight" у карточки.</p>
+            <p><strong>Ожидаемый результат:</strong> Карточка получает или теряет выделение (например, желтый фон).</p>
+            <button onclick="toggleSolution(19)">Показать решение</button>
+            <div id="solution19" class="solution" style="display: none;">
+                <pre><code>let button = document.querySelector(".my-button");
+let card = document.querySelector(".card");
+button.addEventListener("click", function() {
+    card.classList.toggle("highlight");
+});</code></pre>
+            </div>
+        </section>
+
+        <!-- Задание 20 -->
+        <section class="task">
+            <h3>Задание 20: Список задач</h3>
+            <p>Создайте <code>input</code> и кнопку, которые добавляют введенный текст как новый пункт списка <code>ul</code>.</p>
+            <p><strong>Ожидаемый результат:</strong> Новый <code>li</code> с текстом появляется в списке.</p>
+            <button onclick="toggleSolution(20)">Показать решение</button>
+            <div id="solution20" class="solution" style="display: none;">
+                <pre><code>let button = document.querySelector(".my-button");
+let input = document.querySelector(".my-input");
+let list = document.querySelector(".task-list");
+button.addEventListener("click", function() {
+    let newItem = document.createElement("li");
+    newItem.textContent = input.value || "Новая задача";
+    list.appendChild(newItem);
+    input.value = "";
+});</code></pre>
+            </div>
+        </section>
+
+        <!-- Задание 21 -->
+        <section class="task">
+            <h3>Задание 21: Циклическое изменение цвета</h3>
+            <p>Сделайте кнопку, которая циклически меняет цвет фона карточки: красный, синий, зеленый.</p>
+            <p><strong>Ожидаемый результат:</strong> Цвет меняется в порядке: красный → синий → зеленый → красный.</p>
+            <p><strong>Новая концепция:</strong> Массивы позволяют хранить список значений.</p>
+            <button onclick="toggleSolution(21)">Показать решение</button>
+            <div id="solution21" class="solution" style="display: none;">
+                <pre><code>let button = document.querySelector(".my-button");
+let card = document.querySelector(".card");
+let colors = ["red", "blue", "green"];
+let index = 0;
+button.addEventListener("click", function() {
+    card.style.backgroundColor = colors[index];
+    index = (index + 1) % colors.length;
+});</code></pre>
+            </div>
+        </section>
+
+        <!-- Задание 22 -->
+        <section class="task">
+            <h3>Задание 22: Подсчет карточек</h3>
+            <p>Создайте кнопку, которая выводит в консоль количество карточек в контейнере.</p>
+            <p><strong>Ожидаемый результат:</strong> В консоли отображается текущее число карточек.</p>
+            <button onclick="toggleSolution(22)">Показать решение</button>
+            <div id="solution22" class="solution" style="display: none;">
+                <pre><code>let button = document.querySelector(".my-button");
+button.addEventListener("click", function() {
+    let cards = document.querySelectorAll(".card");
+    console.log(`Количество карточек: ${cards.length}`);
+});</code></pre>
+            </div>
+        </section>
+
+        <!-- Задание 23 -->
+        <section class="task">
+            <h3>Задание 23: Случайный текст</h3>
+            <p>Сделайте кнопку, которая выбирает случайный текст из массива и отображает его в параграфе.</p>
+            <p><strong>Ожидаемый результат:</strong> Параграф получает случайный текст, например, "Привет", "Пока", "JS".</p>
+            <button onclick="toggleSolution(23)">Показать решение</button>
+            <div id="solution23" class="solution" style="display: none;">
+                <pre><code>let button = document.querySelector(".my-button");
+let text = document.querySelector(".text");
+let phrases = ["Привет", "Пока", "JS"];
+button.addEventListener("click", function() {
+    let randomIndex = Math.floor(Math.random() * phrases.length);
+    text.textContent = phrases[randomIndex];
+});</code></pre>
+            </div>
+        </section>
+
+        <!-- Задание 24 -->
+        <section class="task">
+            <h3>Задание 24: Изменение прозрачности</h3>
+            <p>Создайте кнопку, которая уменьшает прозрачность карточки на 0.1 при каждом клике.</p>
+            <p><strong>Ожидаемый результат:</strong> Карточка становится все более прозрачной.</p>
+            <button onclick="toggleSolution(24)">Показать решение</button>
+            <div id="solution24" class="solution" style="display: none;">
+                <pre><code>let button = document.querySelector(".my-button");
+let card = document.querySelector(".card");
+let opacity = 1;
+button.addEventListener("click", function() {
+    opacity = Math.max(0, opacity - 0.1);
+    card.style.opacity = opacity;
+});</code></pre>
+            </div>
+        </section>
+
+        <!-- Задание 25 -->
+        <section class="task">
+            <h3>Задание 25: Перемешивание карточек</h3>
+            <p>Сделайте кнопку, которая меняет местами первую и последнюю карточки в контейнере.</p>
+            <p><strong>Ожидаемый результат:</strong> Первая и последняя карточки меняются местами.</p>
+            <button onclick="toggleSolution(25)">Показать решение</button>
+            <div id="solution25" class="solution" style="display: none;">
+                <pre><code>let button = document.querySelector(".my-button");
+let container = document.querySelector(".container");
+button.addEventListener("click", function() {
+    let cards = document.querySelectorAll(".card");
+    let firstCard = cards[0];
+    let lastCard = cards[cards.length - 1];
+    container.insertBefore(lastCard, firstCard);
+    container.appendChild(firstCard);
+});</code></pre>
+            </div>
+        </section>
+
+        <!-- Задание 26 -->
+        <section class="task">
+            <h3>Задание 26: Подсветка активной карточки</h3>
+            <p>Сделайте так, чтобы при клике на карточку только она получала класс "active", а у остальных он убирался.</p>
+            <p><strong>Ожидаемый результат:</strong> Только одна карточка выделена в любой момент.</p>
+            <button onclick="toggleSolution(26)">Показать решение</button>
+            <div id="solution26" class="solution" style="display: none;">
+                <pre><code>let cards = document.querySelectorAll(".card");
+cards.forEach(card => {
+    card.addEventListener("click", function() {
+        cards.forEach(c => c.classList.remove("active"));
+        card.classList.add("active");
+    });
+});</code></pre>
+            </div>
+        </section>
+
+        <!-- Задание 27 -->
+        <section class="task">
+            <h3>Задание 27: Ограничение ввода</h3>
+            <p>Сделайте так, чтобы <code>input</code> принимал только числа, и отображайте их в параграфе.</p>
+            <p><strong>Ожидаемый результат:</strong> В параграфе отображается только числовой ввод.</p>
+            <button onclick="toggleSolution(27)">Показать решение</button>
+            <div id="solution27" class="solution" style="display: none;">
+                <pre><code>let input = document.querySelector(".my-input");
+let text = document.querySelector(".text");
+input.addEventListener("input", function() {
+    let value = input.value;
+    if (!isNaN(value) && value !== "") {
+        text.textContent = value;
+    } else {
+        text.textContent = "Только числа!";
+    }
+});</code></pre>
+            </div>
+        </section>
+
+        <!-- Задание 28 -->
+        <section class="task">
+            <h3>Задание 28: Автоматическое добавление</h3>
+            <p>Создайте кнопку, которая добавляет новую карточку каждые 2 секунды после нажатия (один раз).</p>
+            <p><strong>Ожидаемый результат:</strong> Новая карточка появляется каждые 2 секунды.</p>
+            <p><strong>Новая концепция:</strong> <code>setInterval</code> запускает код через заданные интервалы.</p>
+            <button onclick="toggleSolution(28)">Показать решение</button>
+            <div id="solution28" class="solution" style="display: none;">
+                <pre><code>let button = document.querySelector(".my-button");
+let container = document.querySelector(".container");
+button.addEventListener("click", function() {
+    setInterval(function() {
+        let newCard = document.createElement("div");
+        newCard.className = "card";
+        newCard.textContent = "Авто-карточка";
+        newCard.style.width = "100px";
+        newCard.style.height = "100px";
+        newCard.style.backgroundColor = "#ccc";
+        container.appendChild(newCard);
+    }, 2000);
+});</code></pre>
+            </div>
+        </section>
+
+        <!-- Задание 29 -->
+        <section class="task">
+            <h3>Задание 29: Сумма чисел</h3>
+            <p>Создайте два <code>input</code> для чисел и кнопку, которая выводит их сумму в параграф.</p>
+            <p><strong>Ожидаемый результат:</strong> Сумма чисел отображается в параграфе.</p>
+            <button onclick="toggleSolution(29)">Показать решение</button>
+            <div id="solution29" class="solution" style="display: none;">
+                <pre><code>let button = document.querySelector(".my-button");
+let input1 = document.querySelector(".input1");
+let input2 = document.querySelector(".input2");
+let result = document.querySelector(".result");
+button.addEventListener("click", function() {
+    let num1 = Number(input1.value);
+    let num2 = Number(input2.value);
+    result.textContent = num1 + num2;
+});</code></pre>
+            </div>
+        </section>
+
+        <!-- Задание 30 -->
+        <section class="task">
+            <h3>Задание 30: Смена темы</h3>
+            <p>Создайте кнопку, которая переключает тему страницы между светлой и темной.</p>
+            <p><strong>Ожидаемый результат:</strong> Фон страницы и текст меняются на светлые или темные цвета.</p>
+            <button onclick="toggleSolution(30)">Показать решение</button>
+            <div id="solution30" class="solution" style="display: none;">
+                <pre><code>let button = document.querySelector(".my-button");
+let body = document.body;
+let isDark = false;
+button.addEventListener("click", function() {
+    if (isDark) {
+        body.style.background = "linear-gradient(135deg, #e0f7fa, #b2ebf2)";
+        body.style.color = "#333";
+    } else {
+        body.style.background = "linear-gradient(135deg, #333, #555)";
+        body.style.color = "#fff";
+    }
+    isDark = !isDark;
+});</code></pre>
+            </div>
+        </section>
+
+        <!-- Сложные задания -->
+        <section>
+            <h2>Сложные задания</h2>
+            <p>Эти задания предназначены для тех, кто хочет углубить свои навыки работы с DOM. Они требуют комбинации событий, манипуляций с элементами и сложной логики.</p>
+        </section>
+
+        <!-- Сложное задание 1 -->
+        <section class="task">
+            <h3>Сложное задание 1: Перетаскивание карточек</h3>
+            <p>Реализуйте возможность перетаскивания карточек в контейнере, меняя их местами при отпускании мыши.</p>
+            <p><strong>Ожидаемый результат:</strong> Карточки можно перетаскивать и менять местами с помощью мыши.</p>
+            <p><strong>Новая концепция:</strong> События <code>dragstart</code>, <code>dragover</code>, <code>drop</code> позволяют реализовать перетаскивание (drag-and-drop).</p>
+            <button onclick="toggleSolution(31)">Показать решение</button>
+            <div id="solution31" class="solution" style="display: none;">
+                <pre><code>let cards = document.querySelectorAll(".card");
+let draggedCard = null;
+
+cards.forEach(card => {
+    card.setAttribute("draggable", true);
+    card.addEventListener("dragstart", function(e) {
+        draggedCard = card;
+        setTimeout(() => card.style.opacity = "0.5", 0);
+    });
+    card.addEventListener("dragend", function() {
+        draggedCard.style.opacity = "1";
+        draggedCard = null;
+    });
+    card.addEventListener("dragover", function(e) {
+        e.preventDefault();
+    });
+    card.addEventListener("drop", function(e) {
+        e.preventDefault();
+        if (draggedCard !== card) {
+            let container = card.parentNode;
+            let allCards = [...container.querySelectorAll(".card")];
+            let draggedIndex = allCards.indexOf(draggedCard);
+            let targetIndex = allCards.indexOf(card);
+            if (draggedIndex < targetIndex) {
+                container.insertBefore(draggedCard, card.nextSibling);
+            } else {
+                container.insertBefore(draggedCard, card);
+            }
+        }
+    });
+});
+</code></pre>
+            </div>
+        </section>
+
+        <!-- Сложное задание 2 -->
+        <section class="task">
+            <h3>Сложное задание 2: Интерактивный список с удалением и редактированием</h3>
+            <p>Создайте <code>input</code> и кнопку для добавления задач в список. Каждая задача должна иметь кнопки "Удалить" и "Редактировать".</p>
+            <p><strong>Ожидаемый результат:</strong> Пользователь может добавлять задачи, удалять их или редактировать текст, заменяя задачу на <code>input</code> при редактировании.</p>
+            <button onclick="toggleSolution(32)">Показать решение</button>
+            <div id="solution32" class="solution" style="display: none;">
+                <pre><code>let addButton = document.querySelector(".my-button");
+let input = document.querySelector(".my-input");
+let list = document.querySelector(".task-list");
+
+addButton.addEventListener("click", function() {
+    if (input.value.trim()) {
+        let li = document.createElement("li");
+        let span = document.createElement("span");
+        span.textContent = input.value;
+        let deleteBtn = document.createElement("button");
+        deleteBtn.textContent = "Удалить";
+        deleteBtn.style.marginLeft = "10px";
+        let editBtn = document.createElement("button");
+        editBtn.textContent = "Редактировать";
+        editBtn.style.marginLeft = "10px";
+
+        deleteBtn.addEventListener("click", function() {
+            li.remove();
+        });
+        editBtn.addEventListener("click", function() {
+            let editInput = document.createElement("input");
+            editInput.value = span.textContent;
+            li.replaceChild(editInput, span);
+            editBtn.textContent = "Сохранить";
+            editBtn.onclick = function() {
+                span.textContent = editInput.value;
+                li.replaceChild(span, editInput);
+                editBtn.textContent = "Редактировать";
+                editBtn.onclick = arguments.callee;
+            };
+        });
+
+        li.appendChild(span);
+        li.appendChild(deleteBtn);
+        li.appendChild(editBtn);
+        list.appendChild(li);
+        input.value = "";
+    }
+});
+</code></pre>
+            </div>
+        </section>
+
+        <!-- Сложное задание 3 -->
+        <section class="task">
+            <h3>Сложное задание 3: Фильтрация карточек</h3>
+            <p>Создайте <code>input</code> и кнопку, которые фильтруют карточки в контейнере по введенному тексту в их содержимом.</p>
+            <p><strong>Ожидаемый результат:</strong> При вводе текста и нажатии кнопки видны только карточки, содержащие введенный текст.</p>
+            <p><strong>Новая концепция:</strong> Метод <code>includes</code> проверяет наличие подстроки в строке.</p>
+            <button onclick="toggleSolution(33)">Показать решение</button>
+            <div id="solution33" class="solution" style="display: none;">
+                <pre><code>let filterButton = document.querySelector(".my-button");
+let filterInput = document.querySelector(".my-input");
+let cards = document.querySelectorAll(".card");
+
+filterButton.addEventListener("click", function() {
+    let filterText = filterInput.value.toLowerCase();
+    cards.forEach(card => {
+        let cardText = card.textContent.toLowerCase();
+        card.style.display = cardText.includes(filterText) ? "block" : "none";
+    });
+});
+</code></pre>
+            </div>
+        </section>
+
+        <!-- Сложное задание 4 -->
+        <section class="task">
+            <h3>Сложное задание 4: Динамическая таблица</h3>
+            <p>Создайте форму с двумя <code>input</code> (строки и столбцы) и кнопку, которая генерирует таблицу с указанным числом строк и столбцов. При клике на ячейку она меняет цвет на случайный.</p>
+            <p><strong>Ожидаемый результат:</strong> Таблица создается с заданными размерами, и ячейки меняют цвет при клике.</p>
+            <button onclick="toggleSolution(34)">Показать решение</button>
+            <div id="solution34" class="solution" style="display: none;">
+                <pre><code>let createButton = document.querySelector(".my-button");
+let rowsInput = document.querySelector(".rows-input");
+let colsInput = document.querySelector(".cols-input");
+let container = document.querySelector(".container");
+
+createButton.addEventListener("click", function() {
+    let rows = Number(rowsInput.value);
+    let cols = Number(colsInput.value);
+    if (rows > 0 && cols > 0) {
+        container.innerHTML = "";
+        let table = document.createElement("table");
+        table.style.borderCollapse = "collapse";
+        for (let i = 0; i < rows; i++) {
+            let tr = document.createElement("tr");
+            for (let j = 0; j < cols; j++) {
+                let td = document.createElement("td");
+                td.style.border = "1px solid #333";
+                td.style.width = "50px";
+                td.style.height = "50px";
+                td.addEventListener("click", function() {
+                    let r = Math.floor(Math.random() * 256);
+                    let g = Math.floor(Math.random() * 256);
+                    let b = Math.floor(Math.random() * 256);
+                    td.style.backgroundColor = `rgb(${r}, ${g}, ${b})`;
+                });
+                tr.appendChild(td);
+            }
+            table.appendChild(tr);
+        }
+        container.appendChild(table);
+    }
+});
+</code></pre>
+            </div>
+        </section>
+
+        <!-- Сложное задание 5 -->
+        <section class="task">
+            <h3>Сложное задание 5: Интерактивное рисование</h3>
+            <p>Создайте область <code>canvas</code> и кнопку для очистки. Пользователь может рисовать на canvas, удерживая левую кнопку мыши, а цвет линии выбирается из <code>input type="color"</code>.</p>
+            <p><strong>Ожидаемый результат:</strong> Пользователь рисует линии на canvas, выбирает цвет, а кнопка очищает холст.</p>
+            <p><strong>Новая концепция:</strong> Элемент <code>canvas</code> позволяет рисовать графику с помощью JavaScript.</p>
+            <button onclick="toggleSolution(35)">Показать решение</button>
+            <div id="solution35" class="solution" style="display: none;">
+                <pre><code>let clearButton = document.querySelector(".my-button");
+let colorInput = document.querySelector(".color-input");
+let canvas = document.createElement("canvas");
+canvas.width = 400;
+canvas.height = 300;
+canvas.style.border = "1px solid #333";
+document.querySelector(".container").appendChild(canvas);
+let ctx = canvas.getContext("2d");
+let isDrawing = false;
+let lastX = 0;
+let lastY = 0;
+
+canvas.addEventListener("mousedown", function(e) {
+    isDrawing = true;
+    [lastX, lastY] = [e.offsetX, e.offsetY];
+});
+canvas.addEventListener("mousemove", function(e) {
+    if (isDrawing) {
+        ctx.beginPath();
+        ctx.moveTo(lastX, lastY);
+        ctx.lineTo(e.offsetX, e.offsetY);
+        ctx.strokeStyle = colorInput.value;
+        ctx.lineWidth = 2;
+        ctx.stroke();
+        [lastX, lastY] = [e.offsetX, e.offsetY];
+    }
+});
+canvas.addEventListener("mouseup", function() {
+    isDrawing = false;
+});
+canvas.addEventListener("mouseout", function() {
+    isDrawing = false;
+});
+clearButton.addEventListener("click", function() {
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+});
+</code></pre>
+            </div>
+        </section>
+    </main>
+    <script>
+    function toggleSolution(num) {
+        const solution = document.getElementById(`solution${num}`);
+        if (solution) {
+            solution.style.display = solution.style.display === 'block' ? 'none' : 'block';
+        }
+    }
+    </script>
+</body>
+</html>
