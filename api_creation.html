@@ -1,0 +1,392 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Создание API: Полное руководство</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body class="api-creation">
+    <nav>
+        <div class="nav-container">
+            <button class="nav-toggle">☰</button>
+            <ul class="nav-menu">
+                <li><a href="index.html">Главная</a></li>
+                <li><a href="php_basics.html">Основы PHP</a></li>
+                <li><a href="pseudo_animations.html">Псевдоклассы и анимации</a></li>
+                <li><a href="grid_flexbox.html">Grid, Flexbox, адаптивность</a></li>
+                <li><a href="javascript_basics.html">Основы JavaScript</a></li>
+                <li><a href="practice.html">Практика JavaScript</a></li>
+                <li><a href="api_basics.html">Основы API</a></li>
+                <li><a href="api_creation.html">Создание API</a></li>
+            </ul>
+        </div>
+    </nav>
+    <main>
+        <section>
+            <h1>Создание API: Полное руководство для начинающих</h1>
+            <p>Привет, ребята! Сегодня мы разберем, как создавать собственные API. Вы узнаете, что такое API, какие типы существуют, на чем их писать, и углубимся в <strong>REST API</strong> — самый популярный стандарт для веб-приложений. Мы рассмотрим терминологию, примеры, лучшие практики и даже создадим простое API на PHP, так как это ваш будущий выбор. Готовы? Погнали!</p>
+        </section>
+
+        <section>
+            <h2>Что такое API?</h2>
+            <p><strong>API</strong> (Application Programming Interface) — это интерфейс, который позволяет разным программам или сервисам обмениваться данными. Представьте, что API — это официант в ресторане: вы делаете заказ (запрос), а он приносит еду (данные) от кухни (сервера).</p>
+            <p>API определяет, какие запросы можно отправлять, какие данные получать и в каком формате. Оно скрывает сложную логику сервера, предоставляя удобный интерфейс для разработчиков.</p>
+            <p><strong>Примеры использования:</strong></p>
+            <ul>
+                <li>Получение списка постов из соцсети.</li>
+                <li>Отправка сообщений в чат-боте.</li>
+                <li>Обновление данных о погоде в приложении.</li>
+            </ul>
+        </section>
+
+        <section>
+            <h2>Типы API</h2>
+            <p>Существует несколько видов API, каждый из которых подходит для разных задач:</p>
+            <ul>
+                <li><strong>REST API</strong> (Representational State Transfer): Самый популярный тип. Работает через HTTP, использует стандартные методы (GET, POST, PUT, DELETE) и возвращает данные в формате JSON или XML. Пример: API соцсетей.</li>
+                <li><strong>SOAP API</strong> (Simple Object Access Protocol): Более старый стандарт, использует XML и строгие протоколы. Часто применяется в корпоративных системах. Пример: банковские API.</li>
+                <li><strong>GraphQL API</strong>: Современный подход, где клиент запрашивает только нужные данные. Гибкий, но сложнее в реализации. Пример: API GitHub.</li>
+                <li><strong>WebSocket API</strong>: Для реального времени (чаты, уведомления). Работает через постоянное соединение. Пример: чаты в мессенджерах.</li>
+                <li><strong>RPC API</strong> (Remote Procedure Call): Вызывает функции на сервере, как будто они локальные. Менее популярен для веб-приложений.</li>
+            </ul>
+            <p>Мы сосредоточимся на <strong>REST API</strong>, так как это стандарт для веб-разработки и он отлично подходит для начинающих.</p>
+        </section>
+
+        <section>
+            <h2>На чем писать API?</h2>
+            <p>API можно писать на любом языке программирования, который поддерживает HTTP-запросы. Вот популярные варианты:</p>
+            <ul>
+                <li><strong>PHP</strong>: Прост в освоении, широко используется для веб-разработки. Фреймворки: Laravel, Symfony.</li>
+                <li><strong>Node.js (JavaScript)</strong>: Быстрый, легкий, идеален для асинхронных операций. Фреймворки: Express.js.</li>
+                <li><strong>Python</strong>: Чистый синтаксис, мощные библиотеки. Фреймворки: Flask, Django.</li>
+                <li><strong>Java</strong>: Надежный, подходит для крупных проектов. Фреймворки: Spring Boot.</li>
+                <li><strong>Ruby</strong>: Простота и читаемость. Фреймворк: Ruby on Rails.</li>
+            </ul>
+            <p>Для нашего курса мы будем использовать <strong>PHP</strong>, так как он популярен, прост для начинающих и отлично подходит для создания REST API.</p>
+        </section>
+
+        <section>
+            <h2>REST API: Подробный разбор</h2>
+            <p><strong>REST</strong> (Representational State Transfer) — это архитектурный стиль для создания API, который использует стандартные HTTP-методы и ресурсы. REST API работает с данными как с ресурсами, доступными по уникальным URL.</p>
+            <h3>Основные принципы REST</h3>
+            <ul>
+                <li><strong>Клиент-сервер</strong>: Разделение интерфейса (фронтенд) и данных (сервер).</li>
+                <li><strong>Без состояния (Stateless)</strong>: Каждый запрос независим, сервер не хранит информацию о предыдущих запросах.</li>
+                <li><strong>Кэшируемость</strong>: Ответы могут кэшироваться для ускорения.</li>
+                <li><strong>Слои (Layered System)</strong>: Сервер может состоять из нескольких слоев (например, балансировщик нагрузки).</li>
+                <li><strong>Единообразие интерфейса</strong>: Стандарты для URL, методов и форматов данных.</li>
+            </ul>
+            <h3>Терминология REST API</h3>
+            <ul>
+                <li><strong>Ресурс</strong>: Объект данных (например, пользователь, пост). Каждый ресурс имеет уникальный URL.</li>
+                <li><strong>Эндпоинт</strong>: URL для доступа к ресурсу (например, <code>/api/users</code>).</li>
+                <li><strong>HTTP-методы</strong>:
+                    <ul>
+                        <li><code>GET</code>: Получить данные (например, список пользователей).</li>
+                        <li><code>POST</code>: Создать новый ресурс.</li>
+                        <li><code>PUT</code>: Обновить существующий ресурс полностью.</li>
+                        <li><code>PATCH</code>: Частично обновить ресурс.</li>
+                        <li><code>DELETE</code>: Удалить ресурс.</li>
+                    </ul>
+                </li>
+                <li><strong>Коды состояния HTTP</strong>:
+                    <ul>
+                        <li><code>200 OK</code>: Успешный запрос.</li>
+                        <li><code>201 Created</code>: Ресурс создан.</li>
+                        <li><code>400 Bad Request</code>: Неверный запрос.</li>
+                        <li><code>401 Unauthorized</code>: Нет авторизации.</li>
+                        <li><code>404 Not Found</code>: Ресурс не найден.</li>
+                        <li><code>500 Internal Server Error</code>: Ошибка сервера.</li>
+                    </ul>
+            </li>
+                <li><strong>Форматы данных</strong>: Обычно JSON, реже XML.</li>
+                <li><strong>Заголовки (Headers)</strong>: Дополнительная информация в запросе/ответе (например, <code>Content-Type: application/json</code>).</li>
+                <li><strong>Параметры запроса</strong>: Данные в URL (например, <code>/users?id=1</code>) или теле запроса.</li>
+                <li><strong>Аутентификация</strong>: Подтверждение личности (токены, OAuth, API-ключи).</li>
+                <li><strong>HATEOAS</strong> (Hypermedia as the Engine of Application State): Ответы содержат ссылки на связанные ресурсы.</li>
+            </ul>
+            <h3>Структура эндпоинтов</h3>
+            <p>Эндпоинты должны быть логичными и следовать стандартам:</p>
+            <ul>
+                <li>Используйте существительные для ресурсов: <code>/users</code>, а не <code>/getUsers</code>.</li>
+                <li>Иерархия: <code>/users/1/posts</code> для постов конкретного пользователя.</li>
+                <li>Фильтрация: <code>/posts?category=news</code>.</li>
+                <li>Пагинация: <code>/posts?page=2&limit=10</code>.</li>
+                <li>Версионирование: <code>/v1/users</code> для поддержки старых клиентов.</li>
+            </ul>
+            <h3>Пример структуры REST API</h3>
+            <p>Предположим, мы создаем API для блога:</p>
+            <pre><code>GET /posts           // Получить все посты
+GET /posts/1         // Получить пост с ID 1
+POST /posts          // Создать новый пост
+PUT /posts/1         // Обновить пост с ID 1
+DELETE /posts/1      // Удалить пост с ID 1
+GET /users/1/posts   // Получить посты пользователя с ID 1
+</code></pre>
+        </section>
+
+        <section>
+            <h2>Создание REST API на PHP</h2>
+            <p>Давайте создадим простое REST API на PHP без фреймворков. Мы сделаем API для управления списком задач (To-Do List).</p>
+            <h3>Настройка</h3>
+            <p>Вам понадобится:</p>
+            <ul>
+                <li>Сервер (например, XAMPP или встроенный сервер PHP).</li>
+                <li>Файл <code>api.php</code> для обработки запросов.</li>
+                <li>База данных (мы будем использовать массив для простоты).</li>
+            </ul>
+            <h3>Пример кода API</h3>
+            <pre><code><?php
+// Устанавливаем заголовки для JSON и CORS
+header("Content-Type: application/json; charset=UTF-8");
+header("Access-Control-Allow-Origin: *");
+header("Access-Control-Allow-Methods: GET, POST, PUT, DELETE");
+header("Access-Control-Allow-Headers: Content-Type");
+
+// Имитация базы данных
+$tasks = [
+    ["id" => 1, "title" => "Купить молоко", "completed" => false],
+    ["id" => 2, "title" => "Изучить PHP", "completed" => true]
+];
+
+// Получаем метод и путь
+$method = $_SERVER["REQUEST_METHOD"];
+$uri = explode("/", trim($_SERVER["REQUEST_URI"], "/"));
+$endpoint = array_search("tasks", $uri) !== false ? "tasks" : "";
+$id = isset($uri[array_search("tasks", $uri) + 1]) ? (int)$uri[array_search("tasks", $uri) + 1] : null;
+
+switch ($method) {
+    case "GET":
+        if ($id) {
+            $task = array_filter($tasks, fn($t) => $t["id"] === $id);
+            echo json_encode(array_values($task)[0] ?? ["error" => "Задача не найдена"], JSON_PRETTY_PRINT);
+        } else {
+            echo json_encode($tasks, JSON_PRETTY_PRINT);
+        }
+        break;
+
+    case "POST":
+        $data = json_decode(file_get_contents("php://input"), true);
+        if (!empty($data["title"])) {
+            $newTask = [
+                "id" => count($tasks) + 1,
+                "title" => $data["title"],
+                "completed" => $data["completed"] ?? false
+            ];
+            $tasks[] = $newTask;
+            http_response_code(201);
+            echo json_encode($newTask, JSON_PRETTY_PRINT);
+        } else {
+            http_response_code(400);
+            echo json_encode(["error" => "Требуется заголовок"], JSON_PRETTY_PRINT);
+        }
+        break;
+
+    case "PUT":
+        if ($id) {
+            $data = json_decode(file_get_contents("php://input"), true);
+            foreach ($tasks as &$task) {
+                if ($task["id"] === $id) {
+                    $task["title"] = $data["title"] ?? $task["title"];
+                    $task["completed"] = $data["completed"] ?? $task["completed"];
+                    echo json_encode($task, JSON_PRETTY_PRINT);
+                    exit;
+                }
+            }
+            http_response_code(404);
+            echo json_encode(["error" => "Задача не найдена"], JSON_PRETTY_PRINT);
+        }
+        break;
+
+    case "DELETE":
+        if ($id) {
+            $tasks = array_filter($tasks, fn($t) => $t["id"] !== $id);
+            http_response_code(204);
+        } else {
+            http_response_code(400);
+            echo json_encode(["error" => "Требуется ID"], JSON_PRETTY_PRINT);
+        }
+        break;
+
+    default:
+        http_response_code(405);
+        echo json_encode(["error" => "Метод не поддерживается"], JSON_PRETTY_PRINT);
+}
+?></code></pre>
+            <h3>Как это работает?</h3>
+            <ul>
+                <li><strong>Заголовки</strong>: Устанавливаем JSON и разрешаем CORS для доступа с других доменов.</li>
+                <li><strong>Маршрутизация</strong>: Парсим URL и метод HTTP.</li>
+                <li><strong>Обработка запросов</strong>:
+                    <ul>
+                        <li><code>GET /tasks</code>: Возвращает все задачи.</li>
+                        <li><code>GET /tasks/1</code>: Возвращает задачу с ID 1.</li>
+                        <li><code>POST /tasks</code>: Создает новую задачу.</li>
+                        <li><code>PUT /tasks/1</code>: Обновляет задачу с ID 1.</li>
+                        <li><code>DELETE /tasks/1</code>: Удаляет задачу с ID 1.</li>
+                    </ul>
+                </li>
+                <li><strong>Ответы</strong>: Формат JSON, с правильными кодами состояния.</li>
+            </ul>
+            <h3>Тестирование API</h3>
+            <p>Используйте инструменты:</p>
+            <ul>
+                <li><strong>Postman</strong>: Для отправки GET, POST и других запросов.</li>
+                <li><strong>curl</strong>: Командная строка для тестирования.</li>
+                <li><strong>fetch</strong>: JavaScript для проверки с фронтенда.</li>
+            </ul>
+            <p>Пример запроса с <code>fetch</code>:</p>
+            <pre><code>async function getTasks() {
+    const response = await fetch("http://localhost/api.php/tasks");
+    const tasks = await response.json();
+    console.log(tasks);
+}
+getTasks();
+</code></pre>
+        </section>
+
+        <section>
+            <h2>Лучшие практики для REST API</h2>
+            <ul>
+                <li><strong>Используйте HTTPS</strong>: Для безопасности данных.</li>
+                <li><strong>Валидация данных</strong>: Проверяйте входные данные на сервере.</li>
+                <li><strong>Ограничение запросов (Rate Limiting)</strong>: Защищает от перегрузки.</li>
+                <li><strong>Документация</strong>: Описывайте эндпоинты (например, с помощью Swagger/OpenAPI).</li>
+                <li><strong>Обработка ошибок</strong>: Возвращайте понятные сообщения об ошибках.</li>
+                <li><strong>Кэширование</strong>: Используйте заголовки <code>ETag</code> или <code>Cache-Control</code>.</li>
+                <li><strong>Аутентификация</strong>: Используйте JWT или OAuth для защиты эндпоинтов.</li>
+            </ul>
+        </section>
+
+        <section>
+            <h2>Интерактивный пример</h2>
+            <p>Попробуйте отправить POST-запрос к нашему API для создания задачи:</p>
+            <textarea class="editor-js">async function createTask() {
+    const response = await fetch("http://localhost/api.php/tasks", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ title: "Новая задача", completed: false })
+    });
+    const task = await response.json();
+    document.querySelector(".result").textContent = JSON.stringify(task, null, 2);
+}
+createTask();
+</textarea>
+            <div class="result-js"></div>
+        </section>
+
+        <section>
+            <h2>Практическое задание</h2>
+            <div class="task">
+                <p><strong>Задание:</strong> Создайте REST API на PHP для управления списком книг. Реализуйте следующие эндпоинты:</p>
+                <ul>
+                    <li><code>GET /books</code>: Получить все книги.</li>
+                    <li><code>GET /books/:id</code>: Получить книгу по ID.</li>
+                    <li><code>POST /books</code>: Добавить новую книгу (поля: title, author).</li>
+                    <li><code>DELETE /books/:id</code>: Удалить книгу по ID.</li>
+                </ul>
+                <p><strong>Ожидаемый результат:</strong> API обрабатывает запросы, возвращает JSON и правильные коды состояния.</p>
+                <p><strong>Подсказка:</strong> Используйте структуру из примера выше, но замените задачи на книги. Храните данные в массиве или подключите SQLite для реальной базы данных.</p>
+                <button onclick="showSolution(1)">Решение</button>
+                <div id="solution1" class="solution">
+                    <pre><code><?php
+header("Content-Type: application/json; charset=UTF-8");
+header("Access-Control-Allow-Origin: *");
+header("Access-Control-Allow-Methods: GET, POST, DELETE");
+header("Access-Control-Allow-Headers: Content-Type");
+
+$books = [
+    ["id" => 1, "title" => "Война и мир", "author" => "Лев Толстой"],
+    ["id" => 2, "title" => "1984", "author" => "Джордж Оруэлл"]
+];
+
+$method = $_SERVER["REQUEST_METHOD"];
+$uri = explode("/", trim($_SERVER["REQUEST_URI"], "/"));
+$endpoint = array_search("books", $uri) !== false ? "books" : "";
+$id = isset($uri[array_search("books", $uri) + 1]) ? (int)$uri[array_search("books", $uri) + 1] : null;
+
+switch ($method) {
+    case "GET":
+        if ($id) {
+            $book = array_filter($books, fn($b) => $b["id"] === $id);
+            echo json_encode(array_values($book)[0] ?? ["error" => "Книга не найдена"], JSON_PRETTY_PRINT);
+        } else {
+            echo json_encode($books, JSON_PRETTY_PRINT);
+        }
+        break;
+
+    case "POST":
+        $data = json_decode(file_get_contents("php://input"), true);
+        if (!empty($data["title"]) && !empty($data["author"])) {
+            $newBook = [
+                "id" => count($books) + 1,
+                "title" => $data["title"],
+                "author" => $data["author"]
+            ];
+            $books[] = $newBook;
+            http_response_code(201);
+            echo json_encode($newBook, JSON_PRETTY_PRINT);
+        } else {
+            http_response_code(400);
+            echo json_encode(["error" => "Требуются title и author"], JSON_PRETTY_PRINT);
+        }
+        break;
+
+    case "DELETE":
+        if ($id) {
+            $books = array_filter($books, fn($b) => $b["id"] !== $id);
+            http_response_code(204);
+        } else {
+            http_response_code(400);
+            echo json_encode(["error" => "Требуется ID"], JSON_PRETTY_PRINT);
+        }
+        break;
+
+    default:
+        http_response_code(405);
+        echo json_encode(["error" => "Метод не поддерживается"], JSON_PRETTY_PRINT);
+}
+?></code></pre>
+                </div>
+            </div>
+        </section>
+
+        <section>
+            <h2>Типичные ошибки</h2>
+            <div class="mistake">
+                <p><strong>Ошибка:</strong> Неправильные заголовки CORS.</p>
+                <p><strong>Решение:</strong> Добавьте <code>Access-Control-Allow-Origin: *</code> или конкретный домен.</p>
+            </div>
+            <div class="mistake">
+                <p><strong>Ошибка:</strong> Игнорирование кодов состояния.</p>
+                <p><strong>Решение:</strong> Используйте <code>http_response_code()</code> для каждого ответа.</p>
+            </div>
+            <div class="mistake">
+                <p><strong>Ошибка:</strong> Неверная обработка тела запроса.</p>
+                <p><strong>Решение:</strong> Используйте <code>file_get_contents("php://input")</code> и <code>json_decode</code>.</p>
+            </div>
+        </section>
+
+        <section>
+            <h2>Заключение</h2>
+            <p>Вы освоили основы создания REST API! Теперь вы знаете, как проектировать эндпоинты, обрабатывать HTTP-методы, работать с JSON и создавать API на PHP. Продолжайте практиковаться, добавляйте базы данных (например, MySQL) и изучайте фреймворки вроде Laravel для более сложных проектов.</p>
+            <p><strong>Ресурсы для практики:</strong></p>
+            <ul>
+                <li><a href="https://restfulapi.net/" target="_blank">REST API Tutorial</a> — основы REST.</li>
+                <li><a href="https://www.php.net/manual/en/" target="_blank">PHP Documentation</a> — официальная документация PHP.</li>
+                <li><a href="https://swagger.io/" target="_blank">Swagger</a> — инструмент для документирования API.</li>
+                <li><a href="https://laravel.com/docs" target="_blank">Laravel Docs</a> — документация популярного PHP-фреймворка.</li>
+            </ul>
+        </section>
+    </main>
+    <script>
+        // JavaScript для переключения меню на мобильных устройствах
+        document.querySelector('.nav-toggle').addEventListener('click', () => {
+            document.querySelector('.nav-menu').classList.toggle('active');
+        });
+    </script>
+    <script src="scripts.js"></script>
+</body>
+</html>

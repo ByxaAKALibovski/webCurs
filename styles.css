@@ -11,8 +11,8 @@ body {
 
 /* Навигация */
 nav {
-    background: #0277bd;
-    padding: 15px;
+    background: #333;
+    padding: 10px 0;
     position: sticky;
     top: 0;
     z-index: 100;
@@ -41,6 +41,63 @@ nav a {
 nav a:hover {
     background: #29b6f6; /* Светлее для читаемости */
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+.nav-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    position: relative;
+}
+.nav-toggle {
+    display: none;
+    font-size: 24px;
+    color: white;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 10px;
+}
+.nav-menu {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+}
+.nav-menu li {
+    margin: 0 10px;
+}
+.nav-menu a {
+    color: white;
+    text-decoration: none;
+    padding: 10px 15px;
+    display: block;
+    transition: background-color 0.3s;
+}
+.nav-menu a:hover {
+    background-color: #555;
+    border-radius: 5px;
+}
+@media (max-width: 768px) {
+    .nav-toggle {
+        display: block;
+    }
+    .nav-menu {
+        display: none;
+        flex-direction: column;
+        position: absolute;
+        top: 50px;
+        left: 0;
+        width: 100%;
+        background-color: #333;
+    }
+    .nav-menu.active {
+        display: flex;
+    }
+    .nav-menu li {
+        margin: 5px 0;
+        text-align: center;
+    }
 }
 
 /* Секции */

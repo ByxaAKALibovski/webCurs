@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Основы PHP: Введение для начинающих</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body class="php-basics">
+    <nav>
+        <div class="nav-container">
+            <button class="nav-toggle">☰</button>
+            <ul class="nav-menu">
+                <li><a href="index.html">Главная</a></li>
+                <li><a href="php_basics.html">Основы PHP</a></li>
+                <li><a href="pseudo_animations.html">Псевдоклассы и анимации</a></li>
+                <li><a href="grid_flexbox.html">Grid, Flexbox, адаптивность</a></li>
+                <li><a href="javascript_basics.html">Основы JavaScript</a></li>
+                <li><a href="practice.html">Практика JavaScript</a></li>
+                <li><a href="api_basics.html">Основы API</a></li>
+                <li><a href="api_creation.html">Создание API</a></li>
+            </ul>
+        </div>
+    </nav>
+    <main>
+        <section>
+            <h1>Основы PHP: Введение для начинающих</h1>
+            <p>Привет, ребята! Сегодня мы начнем изучать PHP — один из самых популярных языков для веб-разработки. Вы узнаете, что такое PHP, для чего он используется, как настроить среду разработки с помощью OpenServer и как писать базовый код, включая переменные, условия, циклы и функции. Готовы? Погнали!</p>
+        </section>
+
+        <section>
+            <h2>Что такое PHP?</h2>
+            <p><strong>PHP</strong> (Hypertext Preprocessor) — это серверный язык программирования, созданный для разработки веб-приложений. Он используется для создания динамических сайтов, которые могут взаимодействовать с базами данных, обрабатывать формы и генерировать контент на лету.</p>
+            <p><strong>Для чего используется PHP?</strong></p>
+            <ul>
+                <li>Создание веб-сайтов и приложений (например, WordPress, Joomla).</li>
+                <li>Обработка данных форм (регистрация, авторизация).</li>
+                <li>Работа с базами данных (MySQL, SQLite).</li>
+                <li>Разработка API для мобильных приложений.</li>
+                <li>Автоматизация задач на сервере.</li>
+            </ul>
+            <p><strong>Почему PHP популярен?</strong> Простота, огромное сообщество, множество фреймворков (Laravel, Symfony) и поддержка на большинстве хостингов.</p>
+        </section>
+
+        <section>
+            <h2>Настройка среды разработки: OpenServer 6</h2>
+            <p>Для работы с PHP нам нужна среда разработки. Мы будем использовать <strong>OpenServer 6</strong> — мощный и удобный инструмент для Windows, который включает Apache, Nginx, PHP, MySQL и другие компоненты. Новая версия 6 предлагает упрощенный интерфейс, поддержку последних версий PHP (до 8.3) и улучшенное управление проектами.</p>
+            <h3>Шаги по установке и настройке OpenServer 6</h3>
+            <ol>
+                <li><strong>Скачайте OpenServer 6</strong>:
+                    <ul>
+                        <li>Перейдите на официальный сайт <a href="https://ospanel.io/" target="_blank">ospanel.io</a>.</li>
+                        <li>Выберите версию OpenServer 6 (Ultimate или Portable в зависимости от ваших нужд).</li>
+                        <li>Загрузите установщик (около 500 МБ).</li>
+                    </ul>
+                </li>
+                <li><strong>Установите OpenServer 6</strong>:
+                    <ul>
+                        <li>Запустите установщик и выберите директорию (например, <code>C:\OpenServer</code>).</li>
+                        <li>Следуйте инструкциям мастера установки. Убедитесь, что у вас есть права администратора.</li>
+                        <li>После установки запустите OpenServer через ярлык на рабочем столе или из папки.</li>
+                    </ul>
+                </li>
+                <li><strong>Запустите и настройте OpenServer</strong>:
+                    <ul>
+                        <li>Найдите иконку OpenServer в системном трее (зеленый флажок). Если она красная, проверьте, не заняты ли порты (80 для HTTP, 3306 для MySQL). В OpenServer 6 можно изменить порты в настройках.</li>
+                        <li>Откройте панель управления OpenServer (ПКМ по иконке → "Панель управления").</li>
+                        <li>В разделе "Модули" выберите версию PHP (рекомендуем PHP 8.1 или 8.2 для новых проектов). OpenServer 6 поддерживает быструю смену версий PHP.</li>
+                    </ul>
+                </li>
+                <li><strong>Создайте проект</strong>:
+                    <ul>
+                        <li>Перейдите в папку <code>C:\OpenServer\domains</code> (или другую, указанную в настройках).</li>
+                        <li>Создайте папку для проекта, например, <code>myproject.local</code>.</li>
+                        <li>В панели управления OpenServer перейдите в "Настройки" → "Домены" и добавьте новый домен <code>myproject.local</code>. Укажите путь к папке проекта.</li>
+                        <li>Перезапустите сервер (ПКМ по иконке → "Перезапустить").</li>
+                    </ul>
+                </li>
+                <li><strong>Проверьте установку</strong>:
+                    <ul>
+                        <li>Создайте файл <code>index.php</code> в папке проекта (<code>C:\OpenServer\domains\myproject.local</code>) с кодом:</li>
+                        <pre><code><?php phpinfo(); ?></code></pre>
+                        <li>Откройте браузер и перейдите по адресу <code>http://myproject.local</code>. Вы должны увидеть страницу с информацией о PHP.</li>
+                    </ul>
+                </li>
+            </ol>
+            <p><strong>Совет:</strong> Используйте редактор кода, например, Visual Studio Code или PhpStorm, для написания PHP-кода. OpenServer 6 интегрируется с VS Code через плагин "OpenServer Panel".</p>
+            <p><strong>Дополнительно:</strong> В OpenServer 6 вы можете управлять базами данных через phpMyAdmin, доступный из панели управления, и настраивать Nginx для повышения производительности.</p>
+        </section>
+
+        <section>
+            <h2>Основы синтаксиса PHP</h2>
+            <p>PHP-код пишется внутри тегов <code><?php ... ?></code>. Вот основные элементы синтаксиса:</p>
+            <h3>1. Вывод данных</h3>
+            <p>Используйте <code>echo</code> или <code>print</code> для вывода текста:</p>
+            <pre><code><?php
+echo "Привет, мир!";
+print "Это мой первый PHP-код.";
+?></code></pre>
+            <h3>2. Переменные</h3>
+            <p>Переменные начинаются с <code>$</code>, тип данных определяется автоматически:</p>
+            <pre><code><?php
+$name = "Алексей"; // строка
+$age = 25; // целое число
+$price = 19.99; // дробное число
+$is_student = true; // булево значение
+
+echo "Имя: $name, возраст: $age";
+?></code></pre>
+            <h3>3. Условные операторы</h3>
+            <p>Используйте <code>if</code>, <code>else</code> для проверки условий:</p>
+            <pre><code><?php
+$age = 18;
+if ($age >= 18) {
+    echo "Вы совершеннолетний!";
+} else {
+    echo "Вы слишком молоды.";
+}
+?></code></pre>
+            <h3>4. Циклы</h3>
+            <p>Циклы <code>for</code>, <code>while</code>, <code>foreach</code> для повторения кода:</p>
+            <pre><code><?php
+// Цикл for
+for ($i = 1; $i <= 5; $i++) {
+    echo "Номер: $i<br>";
+}
+
+// Цикл foreach для массивов
+$fruits = ["яблоко", "банан", "апельсин"];
+foreach ($fruits as $fruit) {
+    echo "Фрукт: $fruit<br>";
+}
+?></code></pre>
+            <h3>5. Массивы</h3>
+            <p>Массивы хранят несколько значений:</p>
+            <pre><code><?php
+// Простой массив
+$colors = ["красный", "синий", "зеленый"];
+echo $colors[0]; // красный
+
+// Ассоциативный массив
+$person = [
+    "name" => "Алексей",
+    "age" => 25
+];
+echo $person["name"]; // Алексей
+?></code></pre>
+        </section>
+
+        <section>
+            <h2>Функции в PHP</h2>
+            <p>Функции позволяют повторно использовать код. Они объявляются с помощью ключевого слова <code>function</code>.</p>
+            <h3>Пример функции</h3>
+            <pre><code><?php
+function greet($name) {
+    return "Привет, $name!";
+}
+echo greet("Алексей"); // Привет, Алексей!
+?></code></pre>
+            <h3>Функции с параметрами по умолчанию</h3>
+            <pre><code><?php
+function calculateTotal($price, $quantity = 1) {
+    return $price * $quantity;
+}
+echo calculateTotal(100); // 100
+echo calculateTotal(100, 3); // 300
+?></code></pre>
+            <h3>Функции с возвратом массива</h3>
+            <pre><code><?php
+function getUserInfo() {
+    return [
+        "name" => "Алексей",
+        "age" => 25
+    ];
+}
+$user = getUserInfo();
+echo $user["name"]; // Алексей
+?></code></pre>
+        </section>
+
+        <section>
+            <h2>Практическое задание</h2>
+            <div class="task">
+                <p><strong>Задание:</strong> Создайте PHP-страницу, которая:</p>
+                <ul>
+                    <li>Содержит функцию <code>calculateDiscount</code>, которая принимает цену и процент скидки, возвращает цену со скидкой.</li>
+                    <li>Выводит таблицу с товарами (название, цена, скидка, цена со скидкой) для массива товаров.</li>
+                </ul>
+                <p><strong>Ожидаемый результат:</strong> HTML-таблица с данными о товарах.</p>
+                <button onclick="showSolution(1)">Решение</button>
+                <div id="solution1" class="solution">
+                    <pre><code><?php
+function calculateDiscount($price, $discountPercent) {
+    return $price - ($price * $discountPercent / 100);
+}
+
+$products = [
+    ["name" => "Телефон", "price" => 10000, "discount" => 10],
+    ["name" => "Ноутбук", "price" => 50000, "discount" => 15],
+    ["name" => "Наушники", "price" => 3000, "discount" => 5]
+];
+?>
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>Товары со скидкой</title>
+    <style>
+        table { border-collapse: collapse; width: 100%; }
+        th, td { border: 1px solid #ddd; padding: 8px; text-align: left; }
+        th { background-color: #f2f2f2; }
+    </style>
+</head>
+<body>
+    <table>
+        <tr>
+            <th>Название</th>
+            <th>Цена</th>
+            <th>Скидка (%)</th>
+            <th>Цена со скидкой</th>
+        </tr>
+        <?php foreach ($products as $product): ?>
+            <tr>
+                <td><?= $product["name"] ?></td>
+                <td><?= $product["price"] ?></td>
+                <td><?= $product["discount"] ?></td>
+                <td><?= calculateDiscount($product["price"], $product["discount"]) ?></td>
+            </tr>
+        <?php endforeach; ?>
+    </table>
+</body>
+</html>
+</code></pre>
+                </div>
+            </div>
+        </section>
+
+        <section>
+            <h2>Типичные ошибки</h2>
+            <div class="mistake">
+                <p><strong>Ошибка:</strong> Забыли закрыть тег <code>?></code>.</p>
+                <p><strong>Решение:</strong> Всегда проверяйте, что PHP-код завершен тегом <code>?></code>.</p>
+            </div>
+            <div class="mistake">
+                <p><strong>Ошибка:</strong> Неправильное имя переменной (например, <code>$Name</code> вместо <code>$name</code>).</p>
+                <p><strong>Решение:</strong> Используйте единообразные имена переменных (например, всегда <code>$userName</code>, а не <code>$UserName</code>).</p>
+            </div>
+            <div class="mistake">
+                <p><strong>Ошибка:</strong> Ошибка синтаксиса из-за пропущенной точки с запятой <code>;</code>.</p>
+                <p><strong>Решение:</strong> Всегда завершайте инструкции точкой с запятой.</p>
+            </div>
+        </section>
+
+        <section>
+            <h2>Заключение</h2>
+            <p>Вы сделали первый шаг в изучении PHP! Теперь вы знаете, как установить OpenServer, писать базовый код, использовать переменные, условия, циклы, массивы и функции. Продолжайте практиковаться, создавайте небольшие проекты и изучайте работу с базами данных, чтобы создавать полноценные веб-приложения.</p>
+            <p><strong>Ресурсы для дальнейшего изучения:</strong></p>
+            <ul>
+                <li><a href="https://www.php.net/manual/ru/" target="_blank">Официальная документация PHP</a> — полный справочник.</li>
+                <li><a href="https://www.w3schools.com/php/" target="_blank">W3Schools PHP Tutorial</a> — уроки для начинающих.</li>
+                <li><a href="https://phptherightway.com/" target="_blank">PHP The Right Way</a> — лучшие практики.</li>
+                <li><a href="https://laravel.com/docs" target="_blank">Laravel Docs</a> — документация популярного фреймворка.</li>
+            </ul>
+        </section>
+    </main>
+    <script>
+        // JavaScript для переключения меню на мобильных устройствах
+        document.querySelector('.nav-toggle').addEventListener('click', () => {
+            document.querySelector('.nav-menu').classList.toggle('active');
+        });
+
+        // Показать/скрыть решение
+        function showSolution(id) {
+            const solution = document.getElementById(`solution${id}`);
+            solution.style.display = solution.style.display === 'none' ? 'block' : 'none';
+        }
+    </script>
+    <script src="scripts.js"></script>
+</body>
+</html>
